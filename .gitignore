@@ -1,0 +1,11 @@
+data/
+storage/
+logs/
+secrets/
+*.db
+*.log
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
