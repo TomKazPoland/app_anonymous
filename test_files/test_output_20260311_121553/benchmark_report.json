@@ -1,0 +1,169 @@
+{
+  "input_file": "/home/potrzebuje/Projects/anonymous_app/test_files/anonimizacja_test_100_podmiotow.txt",
+  "output_file": "/home/potrzebuje/Projects/anonymous_app/test_files/test_output_20260311_121553/output_anon.txt",
+  "global_total": 1025,
+  "global_masked": 1025,
+  "global_success_pct": 100.0,
+  "by_type": {
+    "PESEL": {
+      "input_count": 172,
+      "remaining_in_output": 0,
+      "masked": 172,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PHONE": {
+      "input_count": 158,
+      "remaining_in_output": 0,
+      "masked": 158,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "EMAIL": {
+      "input_count": 100,
+      "remaining_in_output": 0,
+      "masked": 100,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "NIP": {
+      "input_count": 40,
+      "remaining_in_output": 0,
+      "masked": 40,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "VAT_PL": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "REGON": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "KRS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IDCARD": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PASSPORT": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PERSON_CTX": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "ADDRESS_CTX": {
+      "input_count": 40,
+      "remaining_in_output": 0,
+      "masked": 40,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "POSTCODE": {
+      "input_count": 122,
+      "remaining_in_output": 0,
+      "masked": 122,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IBAN": {
+      "input_count": 72,
+      "remaining_in_output": 0,
+      "masked": 72,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "BIC": {
+      "input_count": 60,
+      "remaining_in_output": 0,
+      "masked": 60,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PAN": {
+      "input_count": 7,
+      "remaining_in_output": 0,
+      "masked": 7,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IMEI": {
+      "input_count": 2,
+      "remaining_in_output": 0,
+      "masked": 2,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IP": {
+      "input_count": 66,
+      "remaining_in_output": 0,
+      "masked": 66,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "MAC": {
+      "input_count": 66,
+      "remaining_in_output": 0,
+      "masked": 66,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "VIN": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "GPS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    }
+  }
+}

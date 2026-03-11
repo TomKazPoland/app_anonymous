@@ -1,0 +1,471 @@
+## ANON_JOB: JOB-000003-20260311-002934-089--anonimizacja_test_100_podmiotow.txt
+PLIK TESTOWY DO ANONIMIZACJI — WERSJA: 2026-02-27 (WSZYSTKIE DANE SĄ FIKCYJNE)
+Cel: sprawdzenie anonimizacji/PII redaction dla wielu formatów: dane osobowe, telefony, e-maile, numery identyfikacyjne (PESEL/NIP/REGON), numery dokumentów, dane bankowe (IBAN/SWIFT), karty płatnicze, identyfikatory urządzeń (IMEI/MAC/IP), pojazdy (VIN/tablice), współrzędne, identyfikatory zamówień.
+UWAGA: występują literówki, różne separatory, nawiasy, cudzysłowy i mieszane kolejności pól.
+==========================================================================================
+Faktura VAT nr FV/0001/02/2026 — Nabywca: PROX-001 sp.k., NIP: PL4197811496, REGON: {PZ:REGON:5U7FOEqe}, KRS: {PZ:KRS:zEqpsGu}.
+Osoba kontaktowa: Grabowski, Karol | tel. {PZ:PHONE:qsdS7rvM} | e-mail {PZ:EMAIL:MdgEaPHx}.
+Adres siedziby{PZ:ADDRESS:wto3iJpE}
+Rachunek do zwrotu: PL65686643756877150712772167 (BIC BCANPLIA56F).
+------------------------------------------------------------------------------------------
+Notatka służbowa (2/2026): rozmowa z "Zuzanna Zielińska" <{PZ:EMAIL:ph6WEc7q}>; tel:{PZ:PHONE:qUGyi3Hx}.
+Zweryfikowano PESEL={PZ:PESEL:98qUXMYq} oraz dokument CAJ183221. Zgłoszono błąd adresu: {PZ:ADDRESS:2xou3doY}, {PZ:POSTCODE:5pGdnSfK} {PZ:CITY:vcPpKOoO}.
+Logi: client_ip=162.18.254.25; device_mac=45:45:2F:98:0B:18; gps=49.540113, 15.724025.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marek Kozłowski (PESEL:{PZ:PESEL:jCfBPJ3M}).
+Pojazd VIN:HCGFB5A3Z94CT4LFC tablica:EL Y17445 — odbiór pod adresem {PZ:ADDRESS:LE9drELj}, {PZ:POSTCODE:r4yc969r} {PZ:CITY:uqDdbeXp}.
+Kontakt awaryjny: {PZ:PHONE:AYKudPYU} / {PZ:EMAIL:r2lWbex}.
+------------------------------------------------------------------------------------------
+CSV-like: 4;Pawłowska;Dominika;{PZ:EMAIL:ezYIhkj};{PZ:PHONE:aHOXmRZT};{PZ:ADDRESS:gc1kq4vM}, {PZ:POSTCODE:g1XZhIsd} {PZ:CITY:OhX8a8Gj};PESEL={PZ:PESEL:sJEJsZuw};NIP=8091265813;IBAN=PL42127000608218511018347223;BIC=YEGXPLWOPDF
+Meta{id_card:'BRM994283', passport:"XZ9049952", card:5409148807293791, imei:357621828476495, ip:'212.211.103.86', mac:'76:55:7E:F6:2E:E0'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-903317-M54] Klient: Łukasz Krawczyk (PESEL {PZ:PESEL:7hQaap}, Dowód: {PZ:IDCARD:JsMFKee}, Paszport: {PZ:PASSPORT:4ds5HdDQ}).
+Adres {PZ:ADDRESS:FwwZh6px}
+Płatność: karta 5401 6846 3181 3640 / rachunek PL88564697825394959412025677 (SWIFT/BIC: JAJWPLJH5NA).
+Urządzenie: IMEI=649241075210341, IP=190.22.227.58, MAC=2F:2B:0A:A4:AE:9E.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0006/02/2026 — Nabywca: VISTA-006 Sp. z o.o., NIP: PL0701285047, REGON: {PZ:REGON:BNIVCzGX}, KRS: {PZ:KRS:44BEIKQe}.
+Osoba kontaktowa: Wójcik, Marta | tel. {PZ:PHONE:vTkHH57h} | e-mail "marta6"@xmail.test.
+Adres siedziby{PZ:ADDRESS:VL1QoIv8}
+Rachunek do zwrotu: PL54549407968497276450844422 (BIC PBHXPLT5VPU).
+------------------------------------------------------------------------------------------
+Notatka służbowa (7/2026): rozmowa z "Michał Zając" <"michal7"@mail.example>; tel:{PZ:PHONE:0WDFNtHu}.
+Zweryfikowano PESEL={PZ:PESEL:CRFld4aX} oraz dokument UOE043668. Zgłoszono błąd adresu: {PZ:ADDRESS:EdicvLF0}, {PZ:POSTCODE:6ZqH5FN} {PZ:CITY:b83LIJVm}.
+Logi: client_ip=51.123.131.7; device_mac=67:CD:66:CE:55:2A; gps=53.765398, 19.662174.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Dominika Piotrowska (PESEL:{PZ:PESEL:TanLRbMq}).
+Pojazd VIN:N3VJCM4ALSVJT38R9 tablica:GD YE8440 — odbiór pod adresem {PZ:ADDRESS:Ls7tdUjK}, {PZ:POSTCODE:ZXOBvKBl} {PZ:CITY:GaVaRA9p}.
+Kontakt awaryjny: {PZ:PHONE:q12xrouz} / "dominika.piotrowska"@corp.test.
+------------------------------------------------------------------------------------------
+CSV-like: 9;Zając;Marcin;{PZ:EMAIL:8vdvLe9v};{PZ:PHONE:2s634orP};{PZ:ADDRESS:RdnQdWL5}, {PZ:POSTCODE:8nwUimGn} {PZ:CITY:8Bclrkzp};PESEL={PZ:PESEL:Tb1Pc8od};NIP=0263582873;IBAN=PL65535026706706330455366638;BIC=QDJTPLGY3VG
+Meta{id_card:'DNK640364', passport:"EX5979290", card:5859348430507413, imei:088200877203250, ip:'77.201.156.139', mac:'7B:2D:AA:2F:9A:59'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-883675-V81] Klient: Dominika Mazur (PESEL {PZ:PESEL:qIHMifV6}, Dowód: {PZ:IDCARD:RKx7tHSw}, Paszport: {PZ:PASSPORT:RLLQhiGT}).
+Adres {PZ:ADDRESS:xWZAWuMz}
+Płatność: karta 4273 1886 9799 6529 / rachunek PL58991729367862855482794781 (SWIFT/BIC: QVRJPLD3SOW).
+Urządzenie: IMEI=179742331784934, IP=10.50.188.203, MAC=3D:91:0D:E8:A7:A1.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0011/02/2026 — Nabywca: TURBINA-011 S.A., NIP: PL0899138448, REGON: {PZ:REGON:hFAyHRz}, KRS: {PZ:KRS:bo9bAR93}.
+Osoba kontaktowa: Grabowski, Tomasz | tel. {PZ:PHONE:zJxAfTRY} | e-mail {PZ:EMAIL:9U30KGzv}.
+Adres siedziby{PZ:ADDRESS:5Ril73J}
+Rachunek do zwrotu: PL79178320323611559815238261 (BIC DNBEPLHLUXB).
+------------------------------------------------------------------------------------------
+Notatka służbowa (12/2026): rozmowa z "Maria Kamińska" <{PZ:EMAIL:e19ACRGn}>; tel:{PZ:PHONE:40nB6FY4}.
+Zweryfikowano PESEL={PZ:PESEL:LCS5Unvf} oraz dokument SSI952149. Zgłoszono błąd adresu: {PZ:ADDRESS:ImOxYTXM}, {PZ:POSTCODE:h71ohqJV} {PZ:CITY:r2otlkIM}.
+Logi: client_ip=14.183.157.135; device_mac=34:39:89:80:FD:48; gps=53.189472, 19.879800.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Bartosz Wiśniewski (PESEL:{PZ:PESEL:nxz3EPBk}).
+Pojazd VIN:UHYLMNMUWB9N0ZNV1 tablica:ND EY0245 — odbiór pod adresem {PZ:ADDRESS:h8Htrkh4}, {PZ:POSTCODE:OpFNS5ki} {PZ:CITY:f9HRFFU2}.
+Kontakt awaryjny: {PZ:PHONE:lJpgce9} / "bartosz13"@xmail.test.
+------------------------------------------------------------------------------------------
+CSV-like: 14;Mazur;Anna;{PZ:EMAIL:ryZNrCtI};{PZ:PHONE:3xH7Zd0};{PZ:ADDRESS:C9tlYSgT}, {PZ:POSTCODE:ebqVu60l} {PZ:CITY:JHxz520e};PESEL={PZ:PESEL:1t7GBDrQ};NIP=9818821827;IBAN=PL83533901582472283946656845;BIC=IMGRPLPSISQ
+Meta{id_card:'OTG315807', passport:"XF3161563", card:4211063877555021, imei:221130688234149, ip:'233.199.219.64', mac:'03:7A:DD:91:8F:69'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-107352-R57] Klient: Przemysław Woźniak (PESEL {PZ:PESEL:6W6KKWZ}, Dowód: {PZ:IDCARD:XhM1gQO}, Paszport: {PZ:PASSPORT:kyBOF58}).
+Adres {PZ:ADDRESS:tidbzPL}
+Płatność: karta 4190 1081 4487 1437 / rachunek PL26568590408382767829239508 (SWIFT/BIC: TYRMPLKV6AW).
+Urządzenie: IMEI=124137635132936, IP=57.105.128.81, MAC=10:24:2F:8E:34:72.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0016/02/2026 — Nabywca: SFERA-016 s.c., NIP: PL8325977277, REGON: {PZ:REGON:5g2COIF}, KRS: {PZ:KRS:49MMwrP}.
+Osoba kontaktowa: Grabowska, Magdalena | tel. {PZ:PHONE:I1dZyAzI} | e-mail {PZ:EMAIL:59T76cAW}.
+Adres siedziby{PZ:ADDRESS:Z3XWw2DW}
+Rachunek do zwrotu: PL48972676975204479799022675 (BIC EGRUPL1KJO5).
+------------------------------------------------------------------------------------------
+Notatka służbowa (17/2026): rozmowa z "Jan Michalski" <{PZ:EMAIL:5Xy5rvur}>; tel:{PZ:PHONE:qGj9Q5fR}.
+Zweryfikowano PESEL={PZ:PESEL:bHnOx0PM} oraz dokument WAY776756. Zgłoszono błąd adresu: {PZ:ADDRESS:DR4Q6RPI}, {PZ:POSTCODE:1hFBlUbZ} {PZ:CITY:OU7X9UrM}.
+Logi: client_ip=184.179.203.213; device_mac=E7:D5:28:91:70:4F; gps=53.953865, 15.329539.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Barbara Michalska (PESEL:{PZ:PESEL:4L0SUmKI}).
+Pojazd VIN:NLLAB9J3M0F5NEFAF tablica:TO H34651 — odbiór pod adresem {PZ:ADDRESS:wiKcXSMP}, {PZ:POSTCODE:joaKTZS8} {PZ:CITY:dPGUc6Rr}.
+Kontakt awaryjny: {PZ:PHONE:cb8AIKzO} / {PZ:EMAIL:gPcTRPdX}.
+------------------------------------------------------------------------------------------
+CSV-like: 19;Wójcik;Szymon;{PZ:EMAIL:AJOAbbKJ};{PZ:PHONE:u9jXJYAx};{PZ:ADDRESS:CSYMINkf}, {PZ:POSTCODE:yRpSjeCZ} {PZ:CITY:kzJgrug4};PESEL={PZ:PESEL:u4JrfkX6};NIP=3784015753;IBAN=PL67824493560044919638891871;BIC=CSDQPL65571
+Meta{id_card:'ZSF514860', passport:"VO2837805", card:5441708807484303, imei:195315305919680, ip:'186.94.155.225', mac:'DC:DD:39:63:EA:D5'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-102016-D46] Klient: Agnieszka Grabowska (PESEL {PZ:PESEL:8J16oRtQ}, Dowód: {PZ:IDCARD:atP2gemA}, Paszport: {PZ:PASSPORT:6bpsnh5b}).
+Adres {PZ:ADDRESS:whLUefjq}
+Płatność: karta 5109 4546 6608 4690 / rachunek PL19623299418439499617733171 (SWIFT/BIC: PNGWPL5IFGW).
+Urządzenie: IMEI=996339694987268, IP=53.67.126.86, MAC=30:14:7F:57:DD:2F.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0021/02/2026 — Nabywca: HORYZONT-021 Sp. z o.o. sp.k., NIP: PL8920034941, REGON: {PZ:REGON:ZFPIpwx}, KRS: {PZ:KRS:TB2Te1sp}.
+Osoba kontaktowa: Piotrowski, Marcin | tel. {PZ:PHONE:iYxXvDnd} | e-mail {PZ:EMAIL:GTwUs5lN}.
+Adres siedziby{PZ:ADDRESS:j0tbg3f}
+Rachunek do zwrotu: PL89723226713749336775681365 (BIC QXIMPL51SD7).
+------------------------------------------------------------------------------------------
+Notatka służbowa (22/2026): rozmowa z "Agnieszka Dąbrowska" <{PZ:EMAIL:XDTfybu}>; tel:{PZ:PHONE:ZhxVKoWO}.
+Zweryfikowano PESEL={PZ:PESEL:ZoaOJ5oc} oraz dokument JVH195016. Zgłoszono błąd adresu: {PZ:ADDRESS:6HSiIGlk}, {PZ:POSTCODE:dJVyh7} {PZ:CITY:sj3wB1cL}.
+Logi: client_ip=118.143.53.142; device_mac=2F:7E:9A:00:11:28; gps=51.084276, 20.261634.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Przemysław Kamiński (PESEL:{PZ:PESEL:yD4xnDwM}).
+Pojazd VIN:Y63GM75E3ZS10G0DZ tablica:PO R80131 — odbiór pod adresem {PZ:ADDRESS:u2zGOX}, {PZ:POSTCODE:Jo1R8rr} {PZ:CITY:xZawPkh8}.
+Kontakt awaryjny: {PZ:PHONE:JRNpuL4z} / {PZ:EMAIL:g3cblqFl}.
+------------------------------------------------------------------------------------------
+CSV-like: 24;Piotrowska;Maria;"mariapiotrowska"@przyklad.pl;{PZ:PHONE:QZ3ZQ2uT};{PZ:ADDRESS:TCW3QNa}, {PZ:POSTCODE:GHDZVdZr} {PZ:CITY:ZPCpAXt8};PESEL={PZ:PESEL:kOYnXMi0};NIP=6137081256;IBAN=PL35666825879077387982121896;BIC=DHVZPLX510B
+Meta{id_card:'LJP423386', passport:"UQ7899656", card:4938931770542941, imei:511714275858898, ip:'123.227.57.96', mac:'CA:B9:78:9D:38:31'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-228737-J54] Klient: Marek Kowalski (PESEL {PZ:PESEL:JHzv5wU}, Dowód: {PZ:IDCARD:lXe9w7sp}, Paszport: {PZ:PASSPORT:NbL2momq}).
+Adres {PZ:ADDRESS:PbHQlsX}
+Płatność: karta 4328 5927 6027 3503 / rachunek PL33939562980317262326995671 (SWIFT/BIC: GDGFPLZIDYZ).
+Urządzenie: IMEI=346295846721381, IP=80.225.94.54, MAC=19:A8:20:52:91:07.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0026/02/2026 — Nabywca: ALFA-026 S.A., NIP: PL3537659496, REGON: {PZ:REGON:kDYDS0Y}, KRS: {PZ:KRS:bhlnCaq2}.
+Osoba kontaktowa: Grabowska, Zuzanna | tel. {PZ:PHONE:UkpDnKtN} | e-mail {PZ:EMAIL:0A1CIOOD}.
+Adres siedziby{PZ:ADDRESS:JAUBg80q}
+Rachunek do zwrotu: PL53967807826254854441204653 (BIC YMGFPLPZAA7).
+------------------------------------------------------------------------------------------
+Notatka służbowa (27/2026): rozmowa z "Łukasz Szymański" <{PZ:EMAIL:BNOckHu}>; tel:{PZ:PHONE:pZfXqx81}.
+Zweryfikowano PESEL={PZ:PESEL:ZkeMSP0x} oraz dokument HAQ356147. Zgłoszono błąd adresu: {PZ:ADDRESS:xl4px9Zv}, {PZ:POSTCODE:FnQBHz2y} {PZ:CITY:tUHKxXzj}.
+Logi: client_ip=182.109.94.228; device_mac=9E:0A:C7:E6:10:58; gps=53.793102, 17.707457.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Natalia Michalska (PESEL:{PZ:PESEL:iQMvmPAw}).
+Pojazd VIN:AYFA0EX9Z40ES6AEK tablica:LU RT2373 — odbiór pod adresem {PZ:ADDRESS:WzUR2et2}, {PZ:POSTCODE:6MhGKaDr} {PZ:CITY:b9sg2qGs}.
+Kontakt awaryjny: {PZ:PHONE:jXIXavxS} / "michalska28"@anon.test.
+------------------------------------------------------------------------------------------
+CSV-like: 29;Dąbrowski;Rafał;{PZ:EMAIL:tHswRAx};{PZ:PHONE:48vLerRh};{PZ:ADDRESS:k26VFNMX}, {PZ:POSTCODE:wlBFPHH} {PZ:CITY:kxhEqw8P};PESEL={PZ:PESEL:YSukmTHY};NIP=0216691046;IBAN=PL60009328404077857988313447;BIC=EKUIPLMZQG4
+Meta{id_card:'JLV689815', passport:"QR6593414", card:4250481027905521, imei:407980574020635, ip:'172.212.143.218', mac:'2C:26:E7:D8:BB:3C'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-449653-B76] Klient: Sylwia Piotrowska (PESEL {PZ:PESEL:csEeoWo2}, Dowód: {PZ:IDCARD:BdNGZooh}, Paszport: {PZ:PASSPORT:7jGiu2mA}).
+Adres {PZ:ADDRESS:bkSb6XDS}
+Płatność: karta 4101 8925 4074 3411 / rachunek PL88396031599638569425139997 (SWIFT/BIC: SXHKPLEE77K).
+Urządzenie: IMEI=432530070608450, IP=214.162.199.171, MAC=C7:C9:54:EE:28:AA.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0031/02/2026 — Nabywca: FOKUS-031 Sp. z o.o. sp.k., NIP: PL6564966206, REGON: {PZ:REGON:1qfPJjV}, KRS: {PZ:KRS:MyJHX9Bo}.
+Osoba kontaktowa: Grabowski, Michał | tel. {PZ:PHONE:0w98J6Lv} | e-mail {PZ:EMAIL:Xaqul3b3}.
+Adres siedziby{PZ:ADDRESS:T80uvT}
+Rachunek do zwrotu: PL47254467849697175966282718 (BIC SVBDPL56PK1).
+------------------------------------------------------------------------------------------
+Notatka służbowa (32/2026): rozmowa z "Agnieszka Zielińska" <{PZ:EMAIL:CvwOXLwG}>; tel:{PZ:PHONE:ZHOeKsER}.
+Zweryfikowano PESEL={PZ:PESEL:fi0mHEbq} oraz dokument NTE025757. Zgłoszono błąd adresu: {PZ:ADDRESS:C8Cz653U}, {PZ:POSTCODE:qxyDO3nS} {PZ:CITY:pGQSbML3}.
+Logi: client_ip=10.140.252.83; device_mac=77:30:70:C9:31:E3; gps=54.409822, 19.963804.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Rafał Piotrowski (PESEL:{PZ:PESEL:DLlMmh3r}).
+Pojazd VIN:KTYBCXJKYE4P7CAWG tablica:WA V9822 — odbiór pod adresem {PZ:ADDRESS:hZ0Llfzq}, {PZ:POSTCODE:xnBL1sm} {PZ:CITY:vATnmfbe}.
+Kontakt awaryjny: {PZ:PHONE:Ay1a2AK0} / {PZ:EMAIL:S6TbGQVj}.
+------------------------------------------------------------------------------------------
+CSV-like: 34;Woźniak;Dominika;{PZ:EMAIL:SqE7htaR};{PZ:PHONE:jSA6AW6P};{PZ:ADDRESS:aj8a3sHS}, {PZ:POSTCODE:WOzN6r8} {PZ:CITY:IiJQPYcN};PESEL={PZ:PESEL:xT3fBWDu};NIP=0509442180;IBAN=PL59399500181909281969668670;BIC=PTNAPLZBW1G
+Meta{id_card:'CFV252454', passport:"QD7990402", card:4657601778400067, imei:062819885344279, ip:'222.14.32.134', mac:'8F:76:13:E2:DD:00'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-471763-P48] Klient: Grzegorz Woźniak (PESEL {PZ:PESEL:huoYqXKf}, Dowód: {PZ:IDCARD:KGGVPWob}, Paszport: {PZ:PASSPORT:KhBpMEQA}).
+Adres {PZ:ADDRESS:vflrA}
+Płatność: karta 5574 7101 6156 5837 / rachunek PL04817206051396364220402533 (SWIFT/BIC: ODJBPLD51Y1).
+Urządzenie: IMEI=504484018664069, IP=27.236.36.52, MAC=D6:A2:AC:A3:34:77.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0036/02/2026 — Nabywca: BETA-036 S.A., NIP: PL3223338683, REGON: {PZ:REGON:jS5iL9AF}, KRS: {PZ:KRS:XggOzkf9}.
+Osoba kontaktowa: Kowalska, Barbara | tel. {PZ:PHONE:f8MhEXFr} | e-mail {PZ:EMAIL:8gjAg1xF}.
+Adres siedziby{PZ:ADDRESS:9PUn4fss}
+Rachunek do zwrotu: PL55365689920952593677570130 (BIC MLTIPLU858D).
+------------------------------------------------------------------------------------------
+Notatka służbowa (37/2026): rozmowa z "Przemysław Kamiński" <{PZ:EMAIL:m5JVgVXa}>; tel:{PZ:PHONE:NQSD0bA0}.
+Zweryfikowano PESEL={PZ:PESEL:tquxKCFJ} oraz dokument ZTK376359. Zgłoszono błąd adresu: {PZ:ADDRESS:oe7Xnwm9}, {PZ:POSTCODE:rYANflXH} {PZ:CITY:hv8LRoU}.
+Logi: client_ip=97.238.161.241; device_mac=FC:B8:DD:D3:26:7F; gps=53.741249, 21.443991.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marta Piotrowska (PESEL:{PZ:PESEL:sb0gSzaY}).
+Pojazd VIN:L6UNZ95W8L54XLCTJ tablica:KI CW3860 — odbiór pod adresem {PZ:ADDRESS:PgkfwM8s}, {PZ:POSTCODE:mAoBCNLf} {PZ:CITY:DWNn9nNT}.
+Kontakt awaryjny: {PZ:PHONE:9HBfkYgr} / {PZ:EMAIL:lbYVQzA4}.
+------------------------------------------------------------------------------------------
+CSV-like: 39;Kowalczyk;Wojciech;{PZ:EMAIL:LlFEO9vD};{PZ:PHONE:7R2DoiQY};{PZ:ADDRESS:SKXyGcQ}, {PZ:POSTCODE:ExVW3Fn} {PZ:CITY:bYvzJLcb};PESEL={PZ:PESEL:etXR7Q6e};NIP=2097972916;IBAN=PL72343303489865065472494034;BIC=EDFHPLD6GP3
+Meta{id_card:'CUZ597802', passport:"BY5433638", card:4747226862661619, imei:003404420153822, ip:'109.90.245.120', mac:'F4:16:C2:54:5D:4E'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-957936-X97] Klient: Katarzyna Krawczyk (PESEL {PZ:PESEL:i6aD75vc}, Dowód: {PZ:IDCARD:Z8xLlzU}, Paszport: {PZ:PASSPORT:C5cSuRXJ}).
+Adres {PZ:ADDRESS:zC97thaI}
+Płatność: karta 4205 4631 5584 0016 / rachunek PL49165512219116560471783211 (SWIFT/BIC: BUFMPLCKRXS).
+Urządzenie: IMEI=668850159088665, IP=198.195.71.146, MAC=D8:D5:25:07:15:69.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0041/02/2026 — Nabywca: DELTA-041 s.c., NIP: PL3023896639, REGON: {PZ:REGON:fwjzQLv}, KRS: {PZ:KRS:p1dU1xZK}.
+Osoba kontaktowa: Kozłowski, Paweł | tel. {PZ:PHONE:8yBdbKw2} | e-mail {PZ:EMAIL:JzNbQ5Z4}.
+Adres siedziby{PZ:ADDRESS:BMvNyFhu}
+Rachunek do zwrotu: PL06679025961017681009279059 (BIC XGZVPLSPO44).
+------------------------------------------------------------------------------------------
+Notatka służbowa (42/2026): rozmowa z "Maria Wiśniewska" <{PZ:EMAIL:lqhgiDnH}>; tel:{PZ:PHONE:cETagDTW}.
+Zweryfikowano PESEL={PZ:PESEL:qWNI7f4V} oraz dokument HSF498390. Zgłoszono błąd adresu: {PZ:ADDRESS:o0bznXgn}, {PZ:POSTCODE:oxCr3w4D} {PZ:CITY:dUl5PSV}.
+Logi: client_ip=8.55.98.53; device_mac=13:A9:A8:5C:A7:C5; gps=50.744356, 19.897262.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Michał Kozłowski (PESEL:{PZ:PESEL:TNNKyjh}).
+Pojazd VIN:4RDWN5EP093T83279 tablica:TO M9604 — odbiór pod adresem {PZ:ADDRESS:LBNchh6a}, {PZ:POSTCODE:3IpdkjT} {PZ:CITY:rEeRJcUC}.
+Kontakt awaryjny: {PZ:PHONE:HodPfxWz} / {PZ:EMAIL:oK4lSO9}.
+------------------------------------------------------------------------------------------
+CSV-like: 44;Grabowska;Maria;{PZ:EMAIL:WIpAr9a};{PZ:PHONE:toERyGIB};{PZ:ADDRESS:85nHNVAM}, {PZ:POSTCODE:dCDhrpr} {PZ:CITY:HeHlpL28};PESEL={PZ:PESEL:LcYstMAn};NIP=8021649307;IBAN=PL31084998864713769906963215;BIC=TVSVPLQOUDE
+Meta{id_card:'SJH513028', passport:"DX5772020", card:4459872151053211, imei:387310038283344, ip:'100.237.70.50', mac:'EB:CD:66:C6:C7:0E'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-766474-E24] Klient: Marcin Nowak (PESEL {PZ:PESEL:R2m1P5QF}, Dowód: {PZ:IDCARD:jVeAfjTl}, Paszport: {PZ:PASSPORT:qce0873V}).
+Adres {PZ:ADDRESS:fvmxsYGW}
+Płatność: karta 5688 0653 0697 5895 / rachunek PL61279880814471152094610659 (SWIFT/BIC: AMCGPLUU48A).
+Urządzenie: IMEI=075340323584537, IP=68.43.218.240, MAC=80:52:18:7E:B6:B6.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0046/02/2026 — Nabywca: NOVO-046 sp.k., NIP: PL9511631924, REGON: {PZ:REGON:TQcgktsL}, KRS: {PZ:KRS:soE5DFEP}.
+Osoba kontaktowa: Krawczyk, Zuzanna | tel. {PZ:PHONE:xOQcQlft} | e-mail {PZ:EMAIL:jHkXy2oS}.
+Adres siedziby{PZ:ADDRESS:NmPblcr4}
+Rachunek do zwrotu: PL30809664156456939884160823 (BIC AKFBPLNN2X5).
+------------------------------------------------------------------------------------------
+Notatka służbowa (47/2026): rozmowa z "Kamil Nowak" <{PZ:EMAIL:viBaubz3}>; tel:{PZ:PHONE:N8qMEFi8}.
+Zweryfikowano PESEL={PZ:PESEL:hkfW9dOj} oraz dokument FQZ879937. Zgłoszono błąd adresu: {PZ:ADDRESS:qP8AQbOF}, {PZ:POSTCODE:VPwGaAY4} {PZ:CITY:uwKcjzyg}.
+Logi: client_ip=121.58.91.8; device_mac=17:68:85:77:CD:37; gps=52.572448, 19.314171.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Monika Wójcik (PESEL:{PZ:PESEL:PafD7AZP}).
+Pojazd VIN:XN8DJ2JYE1R0JC373 tablica:ND O06707 — odbiór pod adresem {PZ:ADDRESS:DjpWNnjo}, {PZ:POSTCODE:1TRYmMc} {PZ:CITY:4adnCvRX}.
+Kontakt awaryjny: {PZ:PHONE:EqTYkYP} / {PZ:EMAIL:7n1j1Vl}.
+------------------------------------------------------------------------------------------
+CSV-like: 49;Jankowski;Szymon;{PZ:EMAIL:v4eGZO65};{PZ:PHONE:k2ArPY0j};{PZ:ADDRESS:NAVu75EA}, {PZ:POSTCODE:QosQLovj} {PZ:CITY:NuTLM12H};PESEL={PZ:PESEL:fSBw5FX};NIP=2841203932;IBAN=PL19846262883403488650012869;BIC=EIWTPLCNQC9
+Meta{id_card:'PGB269057', passport:"HT1066944", card:5470550252440991, imei:575437525543950, ip:'242.82.69.247', mac:'D3:5B:05:5B:A7:DC'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-981810-Y23] Klient: Anna Kozłowska (PESEL {PZ:PESEL:6BCJbbPh}, Dowód: {PZ:IDCARD:whkV2UUe}, Paszport: {PZ:PASSPORT:7OnOD2WV}).
+Adres {PZ:ADDRESS:98rLC6Cf}
+Płatność: karta 5423 2546 9216 1591 / rachunek PL86977364362429705997722982 (SWIFT/BIC: BOAGPL59IUT).
+Urządzenie: IMEI=652925457530038, IP=228.242.124.102, MAC=40:79:AF:CE:CC:CC.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0051/02/2026 — Nabywca: ARKA-051 S.A., NIP: PL7484191057, REGON: {PZ:REGON:WCgLra89}, KRS: {PZ:KRS:4H8CupXq}.
+Osoba kontaktowa: Nowak, Jan | tel. {PZ:PHONE:QzN1NBF} | e-mail {PZ:EMAIL:J3ZwlEF1}.
+Adres siedziby{PZ:ADDRESS:HrCAbGXB}
+Rachunek do zwrotu: PL44475707132776087402590004 (BIC JWEBPLFFXTL).
+------------------------------------------------------------------------------------------
+Notatka służbowa (52/2026): rozmowa z "Zuzanna Wiśniewska" <{PZ:EMAIL:EUOl8umQ}>; tel:{PZ:PHONE:YRDi4trd}.
+Zweryfikowano PESEL={PZ:PESEL:IYcWEXUX} oraz dokument RAH552581. Zgłoszono błąd adresu: {PZ:ADDRESS:WPNUdzZp}, {PZ:POSTCODE:UUcljVS5} {PZ:CITY:CTYXJa3}.
+Logi: client_ip=97.112.47.16; device_mac=78:51:AE:B0:F2:D9; gps=54.325557, 16.156941.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Karol Kamiński (PESEL:{PZ:PESEL:bRICoVpU}).
+Pojazd VIN:R8BZ4X3SFRMUTG8A8 tablica:KR I8472 — odbiór pod adresem {PZ:ADDRESS:seOeZJcq}, {PZ:POSTCODE:mCNe7JjB} {PZ:CITY:sMIP4R1}.
+Kontakt awaryjny: {PZ:PHONE:gZVbbUX9} / {PZ:EMAIL:t5HBACZc}.
+------------------------------------------------------------------------------------------
+CSV-like: 54;Grabowska;Iwona;{PZ:EMAIL:PNVF8drG};{PZ:PHONE:5fXngNp};{PZ:ADDRESS:E52UE8XE}, {PZ:POSTCODE:b7IQeczP} {PZ:CITY:cioRQWX};PESEL={PZ:PESEL:jxYj7uzX};NIP=2717113692;IBAN=PL10486000187617624808970964;BIC=COAVPL27JKO
+Meta{id_card:'WCN217038', passport:"NQ4643478", card:4113041837464280, imei:142322506586232, ip:'218.76.53.240', mac:'09:98:02:68:99:CD'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-580956-V11] Klient: Rafał Lewandowski (PESEL {PZ:PESEL:KYzsI0W6}, Dowód: {PZ:IDCARD:c4N7Gp3p}, Paszport: {PZ:PASSPORT:xJ4ip4Yw}).
+Adres {PZ:ADDRESS:d3VTWVgM}
+Płatność: karta 5655 5385 7366 8211 / rachunek PL21717334598854611937315134 (SWIFT/BIC: ARMYPLDOCQH).
+Urządzenie: IMEI=721244715779287, IP=164.175.39.113, MAC=34:C8:0F:E9:4E:62.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0056/02/2026 — Nabywca: METRO-056 Sp. z o.o., NIP: PL3878533307, REGON: {PZ:REGON:fABN9nIn}, KRS: {PZ:KRS:Pioq9Lpx}.
+Osoba kontaktowa: Kamińska, Anna | tel. {PZ:PHONE:3F3PCSL} | e-mail {PZ:EMAIL:yYQKKkUk}.
+Adres siedziby{PZ:ADDRESS:Ps8kdgpO}
+Rachunek do zwrotu: PL33016326447115526417921015 (BIC XQUYPL3G8T9).
+------------------------------------------------------------------------------------------
+Notatka służbowa (57/2026): rozmowa z "Wojciech Piotrowski" <"wpiotrowski"@corp.test>; tel:{PZ:PHONE:tcUm7iOl}.
+Zweryfikowano PESEL={PZ:PESEL:QsXvouVU} oraz dokument MLR575092. Zgłoszono błąd adresu: {PZ:ADDRESS:sHCrYhgq}, {PZ:POSTCODE:4xnG0D} {PZ:CITY:dRtflBPQ}.
+Logi: client_ip=203.239.90.68; device_mac=C3:77:7E:30:0E:6E; gps=49.853371, 14.525895.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Anna Wójcik (PESEL:{PZ:PESEL:au8ccBHb}).
+Pojazd VIN:6CEKET8W7M7U514DS tablica:OP B06167 — odbiór pod adresem {PZ:ADDRESS:qbMcg2Of}, {PZ:POSTCODE:2kW1veM} {PZ:CITY:FsBWnVJt}.
+Kontakt awaryjny: {PZ:PHONE:seYIMppq} / {PZ:EMAIL:nORBxaOn}.
+------------------------------------------------------------------------------------------
+CSV-like: 59;Lewandowski;Grzegorz;{PZ:EMAIL:Z3mvgSd};{PZ:PHONE:TnZr2g5};{PZ:ADDRESS:aDbm4jtO}, {PZ:POSTCODE:1cbhK2ka} {PZ:CITY:7HoDiOAM};PESEL={PZ:PESEL:bWxXyx2};NIP=5865553355;IBAN=PL16903223093597522223386785;BIC=ZDRNPLO7J3G
+Meta{id_card:'JZF150891', passport:"AX6284678", card:4375316228388876, imei:231963606514508, ip:'60.190.16.209', mac:'97:BC:7C:5C:32:FE'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-354615-D50] Klient: Katarzyna Michalska (PESEL {PZ:PESEL:GtJeN1dn}, Dowód: {PZ:IDCARD:DOnOVepq}, Paszport: {PZ:PASSPORT:xNWWn0e2}).
+Adres {PZ:ADDRESS:FFMvYr3}
+Płatność: karta 5162 1306 7720 5530 / rachunek PL05359346872439493650837599 (SWIFT/BIC: CKDMPLU4UGD).
+Urządzenie: IMEI=348781176696201, IP=247.171.22.154, MAC=64:74:C4:9C:DE:DD.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0061/02/2026 — Nabywca: PROX-061 s.c., NIP: PL2753325788, REGON: {PZ:REGON:ZTXZT2w}, KRS: {PZ:KRS:MpMWhr5}.
+Osoba kontaktowa: Kowalski, Szymon | tel. {PZ:PHONE:Xf5rdEkT} | e-mail {PZ:EMAIL:QW7Tnjpi}.
+Adres siedziby{PZ:ADDRESS:zicsDQP}
+Rachunek do zwrotu: PL92223071827275111563747021 (BIC YZAJPLOO5T3).
+------------------------------------------------------------------------------------------
+Notatka służbowa (62/2026): rozmowa z "Paulina Wójcik" <"paulinawojcik"@corp.test>; tel:{PZ:PHONE:XPITLehx}.
+Zweryfikowano PESEL={PZ:PESEL:uEyGg4nj} oraz dokument VOM826969. Zgłoszono błąd adresu: {PZ:ADDRESS:UhVuKz1M}, {PZ:POSTCODE:ZXacMhd5} {PZ:CITY:jRdDK06}.
+Logi: client_ip=1.167.15.220; device_mac=CC:5B:D1:E5:5A:72; gps=51.400461, 18.415778.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Rafał Pawłowski (PESEL:{PZ:PESEL:NQlg3hkd}).
+Pojazd VIN:90YKH73E71RA9JTVK tablica:KR JP3153 — odbiór pod adresem {PZ:ADDRESS:cViStZ7e}, {PZ:POSTCODE:ulesipJj} {PZ:CITY:c2urlxV}.
+Kontakt awaryjny: {PZ:PHONE:SBblXge} / {PZ:EMAIL:shEiiSyc}.
+------------------------------------------------------------------------------------------
+CSV-like: 64;Mazur;Iwona;"iwona64"@anon.test;{PZ:PHONE:UVkki1Sb};{PZ:ADDRESS:S37kudan}, {PZ:POSTCODE:qOaEYi4y} {PZ:CITY:wzH0HUSv};PESEL={PZ:PESEL:F4a0eb0n};NIP=5409933768;IBAN=PL51260424145066714630724166;BIC=DLKBPL08FNA
+Meta{id_card:'RMV040515', passport:"VL7707996", card:5825203832806887, imei:189484534868675, ip:'66.74.15.172', mac:'BD:E5:64:59:66:FD'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-857732-Q74] Klient: Karol Kozłowski (PESEL {PZ:PESEL:y6fhPAu}, Dowód: {PZ:IDCARD:RMJMrH2g}, Paszport: {PZ:PASSPORT:zO1c03bX}).
+Adres {PZ:ADDRESS:MaCdwFNl}
+Płatność: karta 4620 8649 5009 4848 / rachunek PL34319140116017462337755042 (SWIFT/BIC: HOLMPLZZT3W).
+Urządzenie: IMEI=238854534681347, IP=107.249.218.198, MAC=79:A2:37:91:DF:10.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0066/02/2026 — Nabywca: ARKA-066 Sp. z o.o., NIP: PL7416600460, REGON: {PZ:REGON:KDsZZDN}, KRS: {PZ:KRS:0S23C4Nc}.
+Osoba kontaktowa: Kozłowska, Sylwia | tel. {PZ:PHONE:W3LLfCS5} | e-mail {PZ:EMAIL:IQhouPmi}.
+Adres siedziby{PZ:ADDRESS:7XlRvIwp}
+Rachunek do zwrotu: PL86692805936438232941052971 (BIC OQYTPLX3NZ3).
+------------------------------------------------------------------------------------------
+Notatka służbowa (67/2026): rozmowa z "Tomasz Szymański" <{PZ:EMAIL:dh8UBiM}>; tel:{PZ:PHONE:9OKNPRNK}.
+Zweryfikowano PESEL={PZ:PESEL:1pkD6dW} oraz dokument SFY700427. Zgłoszono błąd adresu: {PZ:ADDRESS:IfnUax9I}, {PZ:POSTCODE:GJxWDatH} {PZ:CITY:reSLnvzA}.
+Logi: client_ip=212.46.85.59; device_mac=0B:B2:37:B1:FA:6B; gps=49.410678, 20.631409.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Paulina Kowalczyk (PESEL:{PZ:PESEL:SPpplpO8}).
+Pojazd VIN:4699UZP9K0693RAMX tablica:BI O6585 — odbiór pod adresem {PZ:ADDRESS:2m6YKbWT}, {PZ:POSTCODE:irCiEj9b} {PZ:CITY:N8j7SQk6}.
+Kontakt awaryjny: {PZ:PHONE:xVGoog6w} / {PZ:EMAIL:R6NmmobO}.
+------------------------------------------------------------------------------------------
+CSV-like: 69;Lewandowski;Przemysław;{PZ:EMAIL:R27klN3X};{PZ:PHONE:g0bTX0hO};{PZ:ADDRESS:GsedIAoZ}, {PZ:POSTCODE:ynNLcVO3} {PZ:CITY:yb8CpkEE};PESEL={PZ:PESEL:QQV9LUBk};NIP=8754821995;IBAN=PL14805250859765774967489192;BIC=XRSNPL73LTV
+Meta{id_card:'ENI620372', passport:"ZI3590317", card:5467862624392523, imei:232360285705650, ip:'114.117.78.37', mac:'27:A7:60:99:97:B2'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-537267-E48] Klient: Marta Szymańska (PESEL {PZ:PESEL:1u0FrIQB}, Dowód: {PZ:IDCARD:CxwHEHab}, Paszport: {PZ:PASSPORT:3gzas4y}).
+Adres {PZ:ADDRESS:MWoYZbaK}
+Płatność: karta 5574 7490 9668 9243 / rachunek PL66628405229375088680629632 (SWIFT/BIC: BHGBPL8YDDB).
+Urządzenie: IMEI=749954142096405, IP=12.248.96.123, MAC=84:FB:E4:B9:BE:53.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0071/02/2026 — Nabywca: VISTA-071 s.c., NIP: PL5195891385, REGON: {PZ:REGON:aXnhMyye}, KRS: {PZ:KRS:igHqOMoK}.
+Osoba kontaktowa: Krawczyk, Adam | tel. {PZ:PHONE:62W7yfK6} | e-mail {PZ:EMAIL:TDGPrC1y}.
+Adres siedziby{PZ:ADDRESS:ORSXDrND}
+Rachunek do zwrotu: PL92654535309922672733241215 (BIC GOBZPLWO2V4).
+------------------------------------------------------------------------------------------
+Notatka służbowa (72/2026): rozmowa z "Anna Grabowska" <{PZ:EMAIL:7i0prvUt}>; tel:{PZ:PHONE:F4FbEDWl}.
+Zweryfikowano PESEL={PZ:PESEL:6nEWtU6r} oraz dokument ZQV414672. Zgłoszono błąd adresu: {PZ:ADDRESS:aNDSsxI5}, {PZ:POSTCODE:2nSEo6a9} {PZ:CITY:OglE90P}.
+Logi: client_ip=21.142.127.112; device_mac=E9:A8:18:EE:6F:04; gps=54.203710, 15.315190.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Bartosz Mazur (PESEL:{PZ:PESEL:zz3thulo}).
+Pojazd VIN:VGB5H6686ZG3UMGV8 tablica:PO U3990 — odbiór pod adresem {PZ:ADDRESS:IGgVnoeT}, {PZ:POSTCODE:YjMg2VoU} {PZ:CITY:tsrVYeJP}.
+Kontakt awaryjny: {PZ:PHONE:ea0LBPR} / {PZ:EMAIL:oANoymNh}.
+------------------------------------------------------------------------------------------
+CSV-like: 74;Kozłowska;Magdalena;{PZ:EMAIL:ButhcDZV};{PZ:PHONE:xCKmpXQg};{PZ:ADDRESS:vPW3thmD}, {PZ:POSTCODE:qLilitfM} {PZ:CITY:JpbHMs9};PESEL={PZ:PESEL:sLsMIa1t};NIP=1271058176;IBAN=PL33920423544354525290798136;BIC=WBQJPLW1DKC
+Meta{id_card:'IPZ315622', passport:"FN7841800", card:5251357960107750, imei:820697223234522, ip:'226.126.6.212', mac:'95:29:51:7A:98:8A'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-449334-Y90] Klient: Marcin Kozłowski (PESEL {PZ:PESEL:kinQZXss}, Dowód: {PZ:IDCARD:pvhJava}, Paszport: {PZ:PASSPORT:CtgsUS}).
+Adres {PZ:ADDRESS:JJYXTk1}
+Płatność: karta 4477 9671 1004 2433 / rachunek PL05738453380091717324747526 (SWIFT/BIC: NGLAPL0AGNF).
+Urządzenie: IMEI=725370260882613, IP=186.166.249.137, MAC=8C:BE:4A:36:DD:DD.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0076/02/2026 — Nabywca: ARKA-076 sp.k., NIP: PL5978216783, REGON: {PZ:REGON:3zw81PWk}, KRS: {PZ:KRS:14FyV9gs}.
+Osoba kontaktowa: Dąbrowska, Marta | tel. {PZ:PHONE:4NwhcEH} | e-mail "dabrowska76"@poczta.example.
+Adres siedziby{PZ:ADDRESS:rMPwij}
+Rachunek do zwrotu: PL25320256764650051213536150 (BIC CKWLPL8PYZT).
+------------------------------------------------------------------------------------------
+Notatka służbowa (77/2026): rozmowa z "Bartosz Kamiński" <{PZ:EMAIL:DsmvmGh}>; tel:{PZ:PHONE:sxj2CxXb}.
+Zweryfikowano PESEL={PZ:PESEL:edQHzGNT} oraz dokument PCY561380. Zgłoszono błąd adresu: {PZ:ADDRESS:Yj5eRc1b}, {PZ:POSTCODE:Hw0i2lat} {PZ:CITY:RJRC6aiX}.
+Logi: client_ip=13.34.134.224; device_mac=13:2D:38:18:80:B6; gps=53.620748, 17.171634.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marta Wójcik (PESEL:{PZ:PESEL:xfLSkxY5}).
+Pojazd VIN:5EWP8V2EV65M8R4MX tablica:EL M3394 — odbiór pod adresem {PZ:ADDRESS:x0xnB5P}, {PZ:POSTCODE:4Qb07JOI} {PZ:CITY:g7hfgybC}.
+Kontakt awaryjny: {PZ:PHONE:y6XYSKFs} / {PZ:EMAIL:SNVsjuQj}.
+------------------------------------------------------------------------------------------
+CSV-like: 79;Mazur;Michał;"michal79"@poczta.example;{PZ:PHONE:HfeKLWE};{PZ:ADDRESS:Ndsj2ups}, {PZ:POSTCODE:lqSSp3HT} {PZ:CITY:aSvhEmKl};PESEL={PZ:PESEL:PtBA68KP};NIP=5069898374;IBAN=PL12252496644120350384139752;BIC=HNSAPL9Z5WN
+Meta{id_card:'GCN784932', passport:"ZS4429042", card:5370164446274945, imei:268195174824522, ip:'118.86.144.222', mac:'63:A8:F9:B6:26:02'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-279042-M11] Klient: Karolina Grabowska (PESEL {PZ:PESEL:ZYaBISYC}, Dowód: {PZ:IDCARD:S7hz0SMo}, Paszport: {PZ:PASSPORT:4HHUnPae}).
+Adres {PZ:ADDRESS:ipbBsrsK}
+Płatność: karta 4962 3571 2430 1563 / rachunek PL16119118683669322598069638 (SWIFT/BIC: GZVWPLU6M1V).
+Urządzenie: IMEI=501919120447040, IP=6.253.200.236, MAC=1F:14:1C:4B:28:67.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0081/02/2026 — Nabywca: PROX-081 s.c., NIP: PL2327304763, REGON: {PZ:REGON:hHZajC4U}, KRS: {PZ:KRS:wKQMjKov}.
+Osoba kontaktowa: Pawłowski, Michał | tel. {PZ:PHONE:kmmLbNs6} | e-mail {PZ:EMAIL:RuszEMhE}.
+Adres siedziby{PZ:ADDRESS:FNRu4hsr}
+Rachunek do zwrotu: PL59618396930600451743925662 (BIC JYTXPLH1L3D).
+------------------------------------------------------------------------------------------
+Notatka służbowa (82/2026): rozmowa z "Monika Zając" <{PZ:EMAIL:FJfJpxaS}>; tel:{PZ:PHONE:L1txiMXm}.
+Zweryfikowano PESEL={PZ:PESEL:4j6VzE98} oraz dokument EBF136964. Zgłoszono błąd adresu: {PZ:ADDRESS:cLZa1mWW}, {PZ:POSTCODE:7tr4qCD} {PZ:CITY:4AD39kBY}.
+Logi: client_ip=8.163.217.205; device_mac=81:EE:43:27:B4:E1; gps=53.267738, 19.515648.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Adam Piotrowski (PESEL:{PZ:PESEL:q0Vw7q27}).
+Pojazd VIN:G99ZLEHJ4WN789TEC tablica:KI EY2595 — odbiór pod adresem {PZ:ADDRESS:4WYs7gvo}, {PZ:POSTCODE:dbejshsy} {PZ:CITY:1u4Y71BH}.
+Kontakt awaryjny: {PZ:PHONE:FHBFQG2} / {PZ:EMAIL:cO7M00Lv}.
+------------------------------------------------------------------------------------------
+CSV-like: 84;Grabowska;Anna;{PZ:EMAIL:PF1TuT1};{PZ:PHONE:wZTQ9RF4};{PZ:ADDRESS:l8xMQkzD}, {PZ:POSTCODE:hAwLctc} {PZ:CITY:ugzdgTel};PESEL={PZ:PESEL:8GAAN5z};NIP=2239120621;IBAN=PL85435307129001243221906710;BIC=COTHPLVB5SU
+Meta{id_card:'GAN317338', passport:"IO6815047", card:4043494742066490, imei:880145130950907, ip:'136.215.158.226', mac:'91:BB:E1:83:3B:11'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-945971-G49] Klient: Grzegorz Lewandowski (PESEL {PZ:PESEL:pEwdPAtl}, Dowód: {PZ:IDCARD:7o4G0VYH}, Paszport: {PZ:PASSPORT:r1x3MIXp}).
+Adres {PZ:ADDRESS:ptPQcgkj}
+Płatność: karta 4655 5604 5727 9835 / rachunek PL13791547983840913715108397 (SWIFT/BIC: DTGFPLFX5SE).
+Urządzenie: IMEI=620785492115365, IP=124.81.185.148, MAC=BE:7A:66:DC:12:41.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0086/02/2026 — Nabywca: OMEGA-086 S.A., NIP: PL1344559904, REGON: {PZ:REGON:2IUTDIL}, KRS: {PZ:KRS:qNBTMnw}.
+Osoba kontaktowa: Zając, Weronika | tel. {PZ:PHONE:9awAcqbo} | e-mail {PZ:EMAIL:Hhhk2WcA}.
+Adres siedziby{PZ:ADDRESS:lI1ygoNv}
+Rachunek do zwrotu: PL44126233014779215743746835 (BIC WVVBPLEK6AX).
+------------------------------------------------------------------------------------------
+Notatka służbowa (87/2026): rozmowa z "Wojciech Mazur" <{PZ:EMAIL:fwn9YCTh}>; tel:{PZ:PHONE:MSRHu7Mu}.
+Zweryfikowano PESEL={PZ:PESEL:y9AKojtD} oraz dokument ZYC367952. Zgłoszono błąd adresu: {PZ:ADDRESS:bT5wMVBe}, {PZ:POSTCODE:T6j767LB} {PZ:CITY:JxByB8IS}.
+Logi: client_ip=147.236.153.145; device_mac=4D:6A:80:35:B1:BD; gps=53.276453, 19.865635.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Agnieszka Szymańska (PESEL:{PZ:PESEL:wnrFGAnq}).
+Pojazd VIN:ZF86UKMWXCNNKTSPB tablica:LU C26757 — odbiór pod adresem {PZ:ADDRESS:iXMgOvaE}, {PZ:POSTCODE:Qc33VFrg} {PZ:CITY:GgMJAyY}.
+Kontakt awaryjny: {PZ:PHONE:XAYMefZ7} / {PZ:EMAIL:yQL8zlZG}.
+------------------------------------------------------------------------------------------
+CSV-like: 89;Kamiński;Jan;{PZ:EMAIL:DbPtN8UA};{PZ:PHONE:gKT3LYVx};{PZ:ADDRESS:hvrXyeO}, {PZ:POSTCODE:eDjs6Zq} {PZ:CITY:KaGuFWae};PESEL={PZ:PESEL:YxdsHIij};NIP=7274631739;IBAN=PL82640096668333581570111947;BIC=XUNRPLN0FHJ
+Meta{id_card:'GVO926889', passport:"CP1577717", card:4437272917438543, imei:882749060000500, ip:'156.246.251.132', mac:'A7:41:D7:6A:27:EA'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-967067-H80] Klient: Monika Pawłowska (PESEL {PZ:PESEL:kWWUTXAq}, Dowód: {PZ:IDCARD:Q8LWGvk7}, Paszport: {PZ:PASSPORT:KFlpIcm5}).
+Adres {PZ:ADDRESS:T9H2pDSz}
+Płatność: karta 5199 6550 0883 6612 / rachunek PL51911345626336002951848142 (SWIFT/BIC: IPZDPL6MRTE).
+Urządzenie: IMEI=074237358681204, IP=38.108.61.53, MAC=6D:04:47:51:99:01.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0091/02/2026 — Nabywca: KOMPAS-091 sp.k., NIP: PL1983541093, REGON: {PZ:REGON:Bj0QlvvJ}, KRS: {PZ:KRS:bTe5SUik}.
+Osoba kontaktowa: Kowalski, Karol | tel. {PZ:PHONE:YgosVqp3} | e-mail {PZ:EMAIL:EibfRXfL}.
+Adres siedziby{PZ:ADDRESS:7uMxWYPS}
+Rachunek do zwrotu: PL97012140264666503104854856 (BIC TZDPPLZZBO4).
+------------------------------------------------------------------------------------------
+Notatka służbowa (92/2026): rozmowa z "Anna Krawczyk" <"akrawczyk"@testmail.pl>; tel:{PZ:PHONE:iSz05nSO}.
+Zweryfikowano PESEL={PZ:PESEL:zrtNHz0f} oraz dokument CHL930625. Zgłoszono błąd adresu: {PZ:ADDRESS:DvEY3QJo}, {PZ:POSTCODE:uw12OXxN} {PZ:CITY:wg1JRplU}.
+Logi: client_ip=233.19.191.183; device_mac=32:61:4F:E5:13:12; gps=53.268244, 15.884798.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marek Piotrowski (PESEL:{PZ:PESEL:VyxL8sZK}).
+Pojazd VIN:3S5RDGUWB7DKDGVLK tablica:PO WV06411 — odbiór pod adresem {PZ:ADDRESS:2bsEbIz7}, {PZ:POSTCODE:YbwtTedB} {PZ:CITY:5q2seHoY}.
+Kontakt awaryjny: {PZ:PHONE:MpE7Bjzd} / {PZ:EMAIL:LMujQ4LV}.
+------------------------------------------------------------------------------------------
+CSV-like: 94;Kowalczyk;Zuzanna;{PZ:EMAIL:MRgteMP};{PZ:PHONE:Gh1GUsrf};{PZ:ADDRESS:i78ywqLh}, {PZ:POSTCODE:PwvcWS} {PZ:CITY:H95pk23B};PESEL={PZ:PESEL:h44PfX};NIP=4114946585;IBAN=PL05366694933496493772083170;BIC=MAFKPLCTDIK
+Meta{id_card:'TRO947399', passport:"SY5974705", card:5623685541703107, imei:249612310722726, ip:'153.148.127.49', mac:'F1:1F:C1:2B:AD:47'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-886634-Q71] Klient: Marek Lewandowski (PESEL {PZ:PESEL:WqS1hGIZ}, Dowód: {PZ:IDCARD:68QqrC8X}, Paszport: {PZ:PASSPORT:E0RljDFe}).
+Adres {PZ:ADDRESS:ceAm3H0S}
+Płatność: karta 5878 8754 5944 6952 / rachunek PL21661929884916073550330380 (SWIFT/BIC: UNHYPLWK32C).
+Urządzenie: IMEI=110230274995196, IP=223.223.125.40, MAC=1A:CE:32:23:94:6D.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0096/02/2026 — Nabywca: METRO-096 s.c., NIP: PL6492304788, REGON: {PZ:REGON:GF9DRlWk}, KRS: {PZ:KRS:2bKQgia}.
+Osoba kontaktowa: Kowalczyk, Maria | tel. {PZ:PHONE:WpoW08kr} | e-mail {PZ:EMAIL:obUpZ0d9}.
+Adres siedziby{PZ:ADDRESS:vyTY9bG2}
+Rachunek do zwrotu: PL73466657680803393528913863 (BIC SCPQPLHMW5U).
+------------------------------------------------------------------------------------------
+Notatka służbowa (97/2026): rozmowa z "Adam Szymański" <{PZ:EMAIL:ecgoxADT}>; tel:{PZ:PHONE:bkgkdrGk}.
+Zweryfikowano PESEL={PZ:PESEL:1D6WENzG} oraz dokument YIS450860. Zgłoszono błąd adresu: {PZ:ADDRESS:q0wzVrN}, {PZ:POSTCODE:mwES3oIe} {PZ:CITY:jUCpczp}.
+Logi: client_ip=73.142.133.133; device_mac=D4:DE:40:66:B5:8E; gps=49.670899, 23.353842.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Julia Zielińska (PESEL:{PZ:PESEL:Ar914EoO}).
+Pojazd VIN:L1CLTUWJBSLH2W7B0 tablica:ND U31559 — odbiór pod adresem {PZ:ADDRESS:wnQwFfh}, {PZ:POSTCODE:kpp11KH4} {PZ:CITY:jg7uhejY}.
+Kontakt awaryjny: {PZ:PHONE:1ojgu64W} / {PZ:EMAIL:lCP700ZB}.
+------------------------------------------------------------------------------------------
+CSV-like: 99;Mazur;Adam;{PZ:EMAIL:RrWn1jt};{PZ:PHONE:idw9rsf};{PZ:ADDRESS:tdPUCNWK}, {PZ:POSTCODE:32eVz2mG} {PZ:CITY:zY2qeegn};PESEL={PZ:PESEL:B9wGSt54};NIP=9505320823;IBAN=PL69544094070188291599473123;BIC=NAIHPLWVZZS
+Meta{id_card:'ISI696746', passport:"MJ4633297", card:5018363902449219, imei:912796573691629, ip:'215.10.16.193', mac:'4C:FD:FE:D1:EF:A3'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-780582-L71] Klient: Aleksandra Piotrowska (PESEL {PZ:PESEL:waD68fpa}, Dowód: {PZ:IDCARD:au2aRS22}, Paszport: {PZ:PASSPORT:Dh4Zhnwo}).
+Adres {PZ:ADDRESS:nL7RBcxy}
+Płatność: karta 5269 1880 3550 6158 / rachunek PL69546242999773164303655826 (SWIFT/BIC: EVLQPLIP05B).
+Urządzenie: IMEI=314098796447743, IP=19.47.231.161, MAC=12:BE:43:82:E0:3C.
+------------------------------------------------------------------------------------------
+
+ANEKS: PRZYPADKI BRZEGOWE
+1) Wiele danych w jednej linii + różne separatory:
+Dominika Woźniak|{PZ:PHONE:moMrEsw}|{PZ:EMAIL:K2eLTbJ}|{PZ:PESEL:0OqSlDpw}|PL59399500181909281969668670 ; Bartosz Kamiński|{PZ:PHONE:PMlQKbMw}|{PZ:EMAIL:XCaU7UZN}|{PZ:PESEL:IEUQAfFG}|PL67008789159498357103775118 ; Michał Pawłowski|{PZ:PHONE:XmFayMy}|{PZ:EMAIL:WTKzZQ}|{PZ:PESEL:N4X3Ax6}|PL59618396930600451743925662 ; Przemysław Lewandowski|{PZ:PHONE:a4V2KrQo}|{PZ:EMAIL:dCOZuKWB}|{PZ:PESEL:XtOBACRd}|PL14805250859765774967489192 ; Dominika Mazur|{PZ:PHONE:vpJs7Vvw}|{PZ:EMAIL:ioywxIQ5}|{PZ:PESEL:EtRdseIk}|PL58991729367862855482794781 ; Agnieszka Dąbrowska|{PZ:PHONE:m7SEiEpG}|{PZ:EMAIL:9hsyfHqg}|{PZ:PESEL:lWSKH76}|PL17265767203763495067434937 ; Marcin Zając|{PZ:PHONE:74VuI6dY}|{PZ:EMAIL:fGUcW7bN}|{PZ:PESEL:9ZJGukFD}|PL65535026706706330455366638 ; Michał Kozłowski|{PZ:PHONE:Dp0OUsC8}|{PZ:EMAIL:N7PFOK0}|{PZ:PESEL:x25im9E}|PL31292956040312787214207047 ; Karol Kowalski|{PZ:PHONE:tbOn6Q8h}|{PZ:EMAIL:5X2ZAVAY}|{PZ:PESEL:crK0Gev}|PL97012140264666503104854856 ; Zuzanna Kowalczyk|{PZ:PHONE:RWj61TTq}|{PZ:EMAIL:uYJ7xS}|{PZ:PESEL:RRWYSG0}|PL05366694933496493772083170 ; Natalia Michalska|{PZ:PHONE:H6uiNN2o}|"michalska28"@anon.test|{PZ:PESEL:tfbdMFHh}|PL75826681927658158212030660 ; Adam Piotrowski|{PZ:PHONE:0JUwC13r}|{PZ:EMAIL:ODiwc290}|{PZ:PESEL:DUNOzdKC}|PL12692942718350708489154384
+
+2) Adresy e-mail z cudzysłowami i nietypowym formatem:
+- "marek25"@anon.test
+- "szymonkowalski"@testmail.pl
+- "szymanski67"@przyklad.pl
+- "kaminski77"@firma.test
+- "sjankowski"@xmail.test
+- "nowak45"@corp.test
+- "wojciech87"@testmail.pl
+- "dabrowska76"@poczta.example
+
+3) Telefony z różnym spacingiem i znakami:
+- tel({PZ:PHONE:C1dLIjHU}) / tel_alt:+48(587)670-656
+- tel({PZ:PHONE:RMRJnE89}) / tel_alt:+48(513)714-815
+- tel({PZ:PHONE:9FMrTdhc}) / tel_alt:+48(103)714-081
+- tel({PZ:PHONE:f5meeMMu}) / tel_alt:+48(170)690-780
+- tel({PZ:PHONE:6Ba7Amxr}) / tel_alt:+48(483)738-501
+- tel({PZ:PHONE:RpeeGObH}) / tel_alt:+48(801)540-644
+- tel({PZ:PHONE:yqEc678f}) / tel_alt:+48(484)071-696
+- tel({PZ:PHONE:gce5Indh}) / tel_alt:+48(488)356-470
+- tel({PZ:PHONE:gw30z2xx}) / tel_alt:+48(278)809-550
+- tel({PZ:PHONE:pBNWHJwV}) / tel_alt:+48(800)257-295
+
+4) Numery kart bez spacji, ze spacjami i z myślnikami (w każdej pozycji INNY numer):
+- 4548342522140531 | 4548 3425 2214 0531 | 4548-3425-2214-0531
+- 5395463787999326 | 5395 4637 8799 9326 | 5395-4637-8799-9326
+- 5321421070569510 | 5321 4210 7056 9510 | 5321-4210-7056-9510
+- 5919320672310741 | 5919 3206 7231 0741 | 5919-3206-7231-0741
+- 4464790126631099 | 4464 7901 2663 1099 | 4464-7901-2663-1099
+- 5666878911730711 | 5666 8789 1173 0711 | 5666-8789-1173-0711
+- 4250706240627465 | 4250 7062 4062 7465 | 4250-7062-4062-7465
+- 5685716337574974 | 5685 7163 3757 4974 | 5685-7163-3757-4974
+
+5) Różne identyfikatory urządzeń w logu JSON:
+{"user":"Paulina Wójcik","ip":"1.167.15.220","mac":"CC:5B:D1:E5:5A:72","imei":"336363754395166","email":""paulinawojcik"@corp.test","phone":"{PZ:PHONE:qwgfAw3V}"}
+{"user":"Magdalena Kozłowska","ip":"226.126.6.212","mac":"95:29:51:7A:98:8A","imei":"820697223234522","email":"{PZ:EMAIL:7CJBhNF}","phone":"{PZ:PHONE:Iub4I3Fb}"}
+{"user":"Barbara Kowalska","ip":"125.53.192.193","mac":"A9:A2:CE:28:4F:6F","imei":"671350611641879","email":"{PZ:EMAIL:glgoOHQl}","phone":"{PZ:PHONE:5ehArctz}"}
+{"user":"Bartosz Mazur","ip":"237.230.111.154","mac":"54:C3:02:31:80:01","imei":"004545772691592","email":"{PZ:EMAIL:j6Fc25MQ}","phone":"{PZ:PHONE:SbGIVKu}"}
+{"user":"Karol Kowalski","ip":"14.133.43.8","mac":"32:68:F8:6E:55:4B","imei":"883891584617722","email":"{PZ:EMAIL:aqq6eG42}","phone":"{PZ:PHONE:IJjfP2xe}"}
+{"user":"Jan Kamiński","ip":"156.246.251.132","mac":"A7:41:D7:6A:27:EA","imei":"882749060000500","email":"{PZ:EMAIL:TgK7VexV}","phone":"{PZ:PHONE:JRYOgiEt}"}
+
+KONIEC PLIKU

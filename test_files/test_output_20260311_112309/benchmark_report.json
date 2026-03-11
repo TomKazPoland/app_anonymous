@@ -1,0 +1,227 @@
+{
+  "input_file": "/home/potrzebuje/Projects/anonymous_app/test_files/anonimizacja_test_100_podmiotow.txt",
+  "output_file": "/home/potrzebuje/Projects/anonymous_app/test_files/test_output_20260311_112309/output_anon.txt",
+  "global_total": 945,
+  "global_masked": 937,
+  "global_success_pct": 99.2,
+  "by_type": {
+    "PESEL": {
+      "input_count": 92,
+      "remaining_in_output": 0,
+      "masked": 92,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PHONE": {
+      "input_count": 158,
+      "remaining_in_output": 0,
+      "masked": 158,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "EMAIL": {
+      "input_count": 100,
+      "remaining_in_output": 0,
+      "masked": 100,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "NIP": {
+      "input_count": 40,
+      "remaining_in_output": 8,
+      "masked": 32,
+      "success_pct": 80.0,
+      "sample_leaks": [
+        "4197811496",
+        "8091265813",
+        "0701285047",
+        "0263582873",
+        "0899138448",
+        "9818821827",
+        "8325977277",
+        "3784015753"
+      ],
+      "records_with_issues": [
+        {
+          "value": "4197811496",
+          "line_no": 5,
+          "record": "Faktura VAT nr FV/0001/02/2026 — Nabywca: PROX-001 sp.k., NIP: PL4197811496, REGON: 453520059, KRS: 9602614774.",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "8091265813",
+          "line_no": 18,
+          "record": "CSV-like: 4;Pawłowska;Dominika;dominikapawlowska@xmail.test;903082185;ul. Polna 37 m. 56, 69-214 Wrocław;PESEL=83122720605;NIP=8091265813;IBAN=PL42127000608218511018347223;BIC=YEGXPLWOPDF",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "0701285047",
+          "line_no": 26,
+          "record": "Faktura VAT nr FV/0006/02/2026 — Nabywca: VISTA-006 Sp. z o.o., NIP: PL0701285047, REGON: 000662570, KRS: 3038521797.",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "0263582873",
+          "line_no": 39,
+          "record": "CSV-like: 9;Zając;Marcin;mzajac@mail.example;+48 373 850 145;ul. Warszawska 13 m. 79, 79-373 Wrocław;PESEL=63121900248;NIP=0263582873;IBAN=PL65535026706706330455366638;BIC=QDJTPLGY3VG",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "0899138448",
+          "line_no": 47,
+          "record": "Faktura VAT nr FV/0011/02/2026 — Nabywca: TURBINA-011 S.A., NIP: PL0899138448, REGON: 238310153, KRS: 7324765191.",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "9818821827",
+          "line_no": 60,
+          "record": "CSV-like: 14;Mazur;Anna;amazur@testmail.pl;519 528 188;ul. Zielona 40 m. 76, 50-928 Olsztyn;PESEL=65032084374;NIP=9818821827;IBAN=PL83533901582472283946656845;BIC=IMGRPLPSISQ",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "8325977277",
+          "line_no": 68,
+          "record": "Faktura VAT nr FV/0016/02/2026 — Nabywca: SFERA-016 s.c., NIP: PL8325977277, REGON: 947503736, KRS: 2818355322.",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        },
+        {
+          "value": "3784015753",
+          "line_no": 81,
+          "record": "CSV-like: 19;Wójcik;Szymon;szymon19@xmail.test;+48-009-163-550;ul. Słoneczna 97/7 m. 83, 43-753 Rzeszów;PESEL=59091318220;NIP=3784015753;IBAN=PL67824493560044919638891871;BIC=CSDQPL65571",
+          "explanation": "Benchmark widzi numer NIP, ale aplikacja go nie zamaskowała albo benchmark nie rozpoznał kontekstu etykiety poprawnie."
+        }
+      ]
+    },
+    "VAT_PL": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "REGON": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "KRS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IDCARD": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PASSPORT": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PERSON_CTX": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "ADDRESS_CTX": {
+      "input_count": 40,
+      "remaining_in_output": 0,
+      "masked": 40,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "POSTCODE": {
+      "input_count": 122,
+      "remaining_in_output": 0,
+      "masked": 122,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IBAN": {
+      "input_count": 72,
+      "remaining_in_output": 0,
+      "masked": 72,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "BIC": {
+      "input_count": 60,
+      "remaining_in_output": 0,
+      "masked": 60,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "PAN": {
+      "input_count": 7,
+      "remaining_in_output": 0,
+      "masked": 7,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IMEI": {
+      "input_count": 2,
+      "remaining_in_output": 0,
+      "masked": 2,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "IP": {
+      "input_count": 66,
+      "remaining_in_output": 0,
+      "masked": 66,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "MAC": {
+      "input_count": 66,
+      "remaining_in_output": 0,
+      "masked": 66,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "VIN": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    },
+    "GPS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": [],
+      "records_with_issues": []
+    }
+  }
+}

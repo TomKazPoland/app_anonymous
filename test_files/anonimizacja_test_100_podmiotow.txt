@@ -1,0 +1,470 @@
+PLIK TESTOWY DO ANONIMIZACJI — WERSJA: 2026-02-27 (WSZYSTKIE DANE SĄ FIKCYJNE)
+Cel: sprawdzenie anonimizacji/PII redaction dla wielu formatów: dane osobowe, telefony, e-maile, numery identyfikacyjne (PESEL/NIP/REGON), numery dokumentów, dane bankowe (IBAN/SWIFT), karty płatnicze, identyfikatory urządzeń (IMEI/MAC/IP), pojazdy (VIN/tablice), współrzędne, identyfikatory zamówień.
+UWAGA: występują literówki, różne separatory, nawiasy, cudzysłowy i mieszane kolejności pól.
+==========================================================================================
+Faktura VAT nr FV/0001/02/2026 — Nabywca: PROX-001 sp.k., NIP: PL4197811496, REGON: 453520059, KRS: 9602614774.
+Osoba kontaktowa: Grabowski, Karol | tel. 019722745 | e-mail kgrabowski@corp.test.
+Adres siedziby/korespondencji: ul. Krakowska 112, 74-228 Toruń.
+Rachunek do zwrotu: PL65686643756877150712772167 (BIC BCANPLIA56F).
+------------------------------------------------------------------------------------------
+Notatka służbowa (2/2026): rozmowa z "Zuzanna Zielińska" <zuzanna2@mail.example>; tel:919790515.
+Zweryfikowano PESEL=96051803792 oraz dokument CAJ183221. Zgłoszono błąd adresu: ul. Polna 59 m. 79, 67-382 Kraków.
+Logi: client_ip=162.18.254.25; device_mac=45:45:2F:98:0B:18; gps=49.540113, 15.724025.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marek Kozłowski (PESEL:01301084638).
+Pojazd VIN:HCGFB5A3Z94CT4LFC tablica:EL Y17445 — odbiór pod adresem al. Niepodległości 131B, 78-927 Katowice.
+Kontakt awaryjny: 771-032-801 / marek3@corp.test.
+------------------------------------------------------------------------------------------
+CSV-like: 4;Pawłowska;Dominika;dominikapawlowska@xmail.test;903082185;ul. Polna 37 m. 56, 69-214 Wrocław;PESEL=83122720605;NIP=8091265813;IBAN=PL42127000608218511018347223;BIC=YEGXPLWOPDF
+Meta{id_card:'BRM994283', passport:"XZ9049952", card:5409148807293791, imei:357621828476495, ip:'212.211.103.86', mac:'76:55:7E:F6:2E:E0'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-903317-M54] Klient: Łukasz Krawczyk (PESEL 96070441773, Dowód: AAN140460, Paszport: CQ1176584).
+Adres dostawy: ul. Szkolna 23 m. 3, 02-416 Bydgoszcz. Telefon kontaktowy: +48-162-694-795. E-mail: lukaszkrawczyk@mail.example.
+Płatność: karta 5401 6846 3181 3640 / rachunek PL88564697825394959412025677 (SWIFT/BIC: JAJWPLJH5NA).
+Urządzenie: IMEI=649241075210341, IP=190.22.227.58, MAC=2F:2B:0A:A4:AE:9E.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0006/02/2026 — Nabywca: VISTA-006 Sp. z o.o., NIP: PL0701285047, REGON: 000662570, KRS: 3038521797.
+Osoba kontaktowa: Wójcik, Marta | tel. 614-113-267 | e-mail "marta6"@xmail.test.
+Adres siedziby/korespondencji: ul. Krakowska 98C m. 20, 77-291 Kielce.
+Rachunek do zwrotu: PL54549407968497276450844422 (BIC PBHXPLT5VPU).
+------------------------------------------------------------------------------------------
+Notatka służbowa (7/2026): rozmowa z "Michał Zając" <"michal7"@mail.example>; tel:559 986 613.
+Zweryfikowano PESEL=57070309582 oraz dokument UOE043668. Zgłoszono błąd adresu: ul. Słoneczna 162, 96-420 Opole.
+Logi: client_ip=51.123.131.7; device_mac=67:CD:66:CE:55:2A; gps=53.765398, 19.662174.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Dominika Piotrowska (PESEL:80081061336).
+Pojazd VIN:N3VJCM4ALSVJT38R9 tablica:GD YE8440 — odbiór pod adresem ul. Kościuszki 118, 30-639 Katowice.
+Kontakt awaryjny: 457-167-931 / "dominika.piotrowska"@corp.test.
+------------------------------------------------------------------------------------------
+CSV-like: 9;Zając;Marcin;mzajac@mail.example;+48 373 850 145;ul. Warszawska 13 m. 79, 79-373 Wrocław;PESEL=63121900248;NIP=0263582873;IBAN=PL65535026706706330455366638;BIC=QDJTPLGY3VG
+Meta{id_card:'DNK640364', passport:"EX5979290", card:5859348430507413, imei:088200877203250, ip:'77.201.156.139', mac:'7B:2D:AA:2F:9A:59'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-883675-V81] Klient: Dominika Mazur (PESEL 04280457309, Dowód: OFJ767924, Paszport: YS2394601).
+Adres dostawy: ul. Krakowska 61 m. 98, 40-116 Opole. Telefon kontaktowy: 214138712. E-mail: dominika.mazur@demo.local.
+Płatność: karta 4273 1886 9799 6529 / rachunek PL58991729367862855482794781 (SWIFT/BIC: QVRJPLD3SOW).
+Urządzenie: IMEI=179742331784934, IP=10.50.188.203, MAC=3D:91:0D:E8:A7:A1.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0011/02/2026 — Nabywca: TURBINA-011 S.A., NIP: PL0899138448, REGON: 238310153, KRS: 7324765191.
+Osoba kontaktowa: Grabowski, Tomasz | tel. 513 714 815 | e-mail tomasz.grabowski@demo.local.
+Adres siedziby/korespondencji: al. Niepodległości 46 m. 78, 15-298 Szczecin.
+Rachunek do zwrotu: PL79178320323611559815238261 (BIC DNBEPLHLUXB).
+------------------------------------------------------------------------------------------
+Notatka służbowa (12/2026): rozmowa z "Maria Kamińska" <mkaminska@poczta.example>; tel:+48 122 627 052.
+Zweryfikowano PESEL=05252507136 oraz dokument SSI952149. Zgłoszono błąd adresu: ul. Mickiewicza 136/12 m. 57, 44-740 Kraków.
+Logi: client_ip=14.183.157.135; device_mac=34:39:89:80:FD:48; gps=53.189472, 19.879800.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Bartosz Wiśniewski (PESEL:08212257496).
+Pojazd VIN:UHYLMNMUWB9N0ZNV1 tablica:ND EY0245 — odbiór pod adresem ul. Lipowa 70, 96-789 Rzeszów.
+Kontakt awaryjny: 012-287-406 / "bartosz13"@xmail.test.
+------------------------------------------------------------------------------------------
+CSV-like: 14;Mazur;Anna;amazur@testmail.pl;519 528 188;ul. Zielona 40 m. 76, 50-928 Olsztyn;PESEL=65032084374;NIP=9818821827;IBAN=PL83533901582472283946656845;BIC=IMGRPLPSISQ
+Meta{id_card:'OTG315807', passport:"XF3161563", card:4211063877555021, imei:221130688234149, ip:'233.199.219.64', mac:'03:7A:DD:91:8F:69'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-107352-R57] Klient: Przemysław Woźniak (PESEL 02221145241, Dowód: OWG171024, Paszport: RQ2765504).
+Adres dostawy: ul. Zielona 188C, 16-285 Szczecin. Telefon kontaktowy: +48-535-022-854. E-mail: "przemyslaw.wozniak"@przyklad.pl.
+Płatność: karta 4190 1081 4487 1437 / rachunek PL26568590408382767829239508 (SWIFT/BIC: TYRMPLKV6AW).
+Urządzenie: IMEI=124137635132936, IP=57.105.128.81, MAC=10:24:2F:8E:34:72.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0016/02/2026 — Nabywca: SFERA-016 s.c., NIP: PL8325977277, REGON: 947503736, KRS: 2818355322.
+Osoba kontaktowa: Grabowska, Magdalena | tel. +48 921 427 683 | e-mail magdalena.grabowska@corp.test.
+Adres siedziby/korespondencji: ul. Długa 57, 62-899 Szczecin.
+Rachunek do zwrotu: PL48972676975204479799022675 (BIC EGRUPL1KJO5).
+------------------------------------------------------------------------------------------
+Notatka służbowa (17/2026): rozmowa z "Jan Michalski" <jan.michalski@firma.test>; tel:831-754-007.
+Zweryfikowano PESEL=05252477574 oraz dokument WAY776756. Zgłoszono błąd adresu: ul. Kwiatowa 127/7, 44-640 Częstochowa.
+Logi: client_ip=184.179.203.213; device_mac=E7:D5:28:91:70:4F; gps=53.953865, 15.329539.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Barbara Michalska (PESEL:73021154896).
+Pojazd VIN:NLLAB9J3M0F5NEFAF tablica:TO H34651 — odbiór pod adresem ul. Kwiatowa 95 m. 22, 28-550 Warszawa.
+Kontakt awaryjny: 713 286 791 / michalska18@xmail.test.
+------------------------------------------------------------------------------------------
+CSV-like: 19;Wójcik;Szymon;szymon19@xmail.test;+48-009-163-550;ul. Słoneczna 97/7 m. 83, 43-753 Rzeszów;PESEL=59091318220;NIP=3784015753;IBAN=PL67824493560044919638891871;BIC=CSDQPL65571
+Meta{id_card:'ZSF514860', passport:"VO2837805", card:5441708807484303, imei:195315305919680, ip:'186.94.155.225', mac:'DC:DD:39:63:EA:D5'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-102016-D46] Klient: Agnieszka Grabowska (PESEL 77071504281, Dowód: LAZ020205, Paszport: BY1865945).
+Adres dostawy: ul. Różana 107/12, 59-482 Warszawa. Telefon kontaktowy: +48 459 832 695. E-mail: "agnieszka20"@demo.local.
+Płatność: karta 5109 4546 6608 4690 / rachunek PL19623299418439499617733171 (SWIFT/BIC: PNGWPL5IFGW).
+Urządzenie: IMEI=996339694987268, IP=53.67.126.86, MAC=30:14:7F:57:DD:2F.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0021/02/2026 — Nabywca: HORYZONT-021 Sp. z o.o. sp.k., NIP: PL8920034941, REGON: 261062036, KRS: 1670375046.
+Osoba kontaktowa: Piotrowski, Marcin | tel. 160 773 745 | e-mail piotrowski21@anon.test.
+Adres siedziby/korespondencji: ul. Krakowska 138 m. 35, 92-731 Gliwice.
+Rachunek do zwrotu: PL89723226713749336775681365 (BIC QXIMPL51SD7).
+------------------------------------------------------------------------------------------
+Notatka służbowa (22/2026): rozmowa z "Agnieszka Dąbrowska" <dabrowska22@xmail.test>; tel:+48 632 264 299.
+Zweryfikowano PESEL=97012906749 oraz dokument JVH195016. Zgłoszono błąd adresu: ul. Piłsudskiego 190B m. 60, 33-179 Sosnowiec.
+Logi: client_ip=118.143.53.142; device_mac=2F:7E:9A:00:11:28; gps=51.084276, 20.261634.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Przemysław Kamiński (PESEL:77011536309).
+Pojazd VIN:Y63GM75E3ZS10G0DZ tablica:PO R80131 — odbiór pod adresem ul. Kościuszki 70, 37-922 Gdańsk.
+Kontakt awaryjny: +48 903 412 466 / przemyslawkaminski@demo.local.
+------------------------------------------------------------------------------------------
+CSV-like: 24;Piotrowska;Maria;"mariapiotrowska"@przyklad.pl;+48-485-434-387;ul. Ogrodowa 62, 96-660 Opole;PESEL=58050534899;NIP=6137081256;IBAN=PL35666825879077387982121896;BIC=DHVZPLX510B
+Meta{id_card:'LJP423386', passport:"UQ7899656", card:4938931770542941, imei:511714275858898, ip:'123.227.57.96', mac:'CA:B9:78:9D:38:31'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-228737-J54] Klient: Marek Kowalski (PESEL 98090380773, Dowód: WUT451371, Paszport: BQ9379000).
+Adres dostawy: ul. Polna 121 m. 81, 64-498 Radom. Telefon kontaktowy: 811-086-781. E-mail: marek25@anon.test.
+Płatność: karta 4328 5927 6027 3503 / rachunek PL33939562980317262326995671 (SWIFT/BIC: GDGFPLZIDYZ).
+Urządzenie: IMEI=346295846721381, IP=80.225.94.54, MAC=19:A8:20:52:91:07.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0026/02/2026 — Nabywca: ALFA-026 S.A., NIP: PL3537659496, REGON: 986110311, KRS: 5337048316.
+Osoba kontaktowa: Grabowska, Zuzanna | tel. 035 315 010 | e-mail zuzanna26@anon.test.
+Adres siedziby/korespondencji: ul. Piłsudskiego 132B, 39-145 Poznań.
+Rachunek do zwrotu: PL53967807826254854441204653 (BIC YMGFPLPZAA7).
+------------------------------------------------------------------------------------------
+Notatka służbowa (27/2026): rozmowa z "Łukasz Szymański" <lukasz27@xmail.test>; tel:+48-279-213-170.
+Zweryfikowano PESEL=53021423721 oraz dokument HAQ356147. Zgłoszono błąd adresu: al. Jana Pawła II 1 m. 39, 50-182 Częstochowa.
+Logi: client_ip=182.109.94.228; device_mac=9E:0A:C7:E6:10:58; gps=53.793102, 17.707457.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Natalia Michalska (PESEL:59121303846).
+Pojazd VIN:AYFA0EX9Z40ES6AEK tablica:LU RT2373 — odbiór pod adresem ul. Mickiewicza 43, 52-161 Gdynia.
+Kontakt awaryjny: 587-670-656 / "michalska28"@anon.test.
+------------------------------------------------------------------------------------------
+CSV-like: 29;Dąbrowski;Rafał;dabrowski29@testmail.pl;+48-676-282-996;ul. Ogrodowa 125, 19-299 Olsztyn;PESEL=61080138867;NIP=0216691046;IBAN=PL60009328404077857988313447;BIC=EKUIPLMZQG4
+Meta{id_card:'JLV689815', passport:"QR6593414", card:4250481027905521, imei:407980574020635, ip:'172.212.143.218', mac:'2C:26:E7:D8:BB:3C'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-449653-B76] Klient: Sylwia Piotrowska (PESEL 74121715682, Dowód: RJI768996, Paszport: QP7007531).
+Adres dostawy: ul. Lipowa 33 m. 74, 91-672 Gliwice. Telefon kontaktowy: +48-253-270-081. E-mail: sylwiapiotrowska@example.com.
+Płatność: karta 4101 8925 4074 3411 / rachunek PL88396031599638569425139997 (SWIFT/BIC: SXHKPLEE77K).
+Urządzenie: IMEI=432530070608450, IP=214.162.199.171, MAC=C7:C9:54:EE:28:AA.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0031/02/2026 — Nabywca: FOKUS-031 Sp. z o.o. sp.k., NIP: PL6564966206, REGON: 631745303, KRS: 3182441038.
+Osoba kontaktowa: Grabowski, Michał | tel. 801-540-644 | e-mail michal31@example.com.
+Adres siedziby/korespondencji: al. Niepodległości 73B, 81-447 Białystok.
+Rachunek do zwrotu: PL47254467849697175966282718 (BIC SVBDPL56PK1).
+------------------------------------------------------------------------------------------
+Notatka służbowa (32/2026): rozmowa z "Agnieszka Zielińska" <agnieszka32@example.com>; tel:941-168-294.
+Zweryfikowano PESEL=73042742726 oraz dokument NTE025757. Zgłoszono błąd adresu: ul. Zielona 51/2, 32-843 Rzeszów.
+Logi: client_ip=10.140.252.83; device_mac=77:30:70:C9:31:E3; gps=54.409822, 19.963804.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Rafał Piotrowski (PESEL:87051479126).
+Pojazd VIN:KTYBCXJKYE4P7CAWG tablica:WA V9822 — odbiór pod adresem ul. Mickiewicza 189, 09-069 Częstochowa.
+Kontakt awaryjny: 060 924 542 / rafal33@przyklad.pl.
+------------------------------------------------------------------------------------------
+CSV-like: 34;Woźniak;Dominika;dominikawozniak@przyklad.pl;+48-225-638-280;ul. Sienkiewicza 187 m. 23, 34-484 Katowice;PESEL=06321735265;NIP=0509442180;IBAN=PL59399500181909281969668670;BIC=PTNAPLZBW1G
+Meta{id_card:'CFV252454', passport:"QD7990402", card:4657601778400067, imei:062819885344279, ip:'222.14.32.134', mac:'8F:76:13:E2:DD:00'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-471763-P48] Klient: Grzegorz Woźniak (PESEL 59080408941, Dowód: CFU155819, Paszport: TD0767055).
+Adres dostawy: ul. Długa 37, 50-553 Lublin. Telefon kontaktowy: +48 943 471 831. E-mail: grzegorz35@example.com.
+Płatność: karta 5574 7101 6156 5837 / rachunek PL04817206051396364220402533 (SWIFT/BIC: ODJBPLD51Y1).
+Urządzenie: IMEI=504484018664069, IP=27.236.36.52, MAC=D6:A2:AC:A3:34:77.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0036/02/2026 — Nabywca: BETA-036 S.A., NIP: PL3223338683, REGON: 802040310, KRS: 3071129415.
+Osoba kontaktowa: Kowalska, Barbara | tel. 671 771 003 | e-mail bkowalska@example.com.
+Adres siedziby/korespondencji: ul. Morska 166/2, 35-172 Kielce.
+Rachunek do zwrotu: PL55365689920952593677570130 (BIC MLTIPLU858D).
+------------------------------------------------------------------------------------------
+Notatka służbowa (37/2026): rozmowa z "Przemysław Kamiński" <pkaminski@firma.test>; tel:103-714-081.
+Zweryfikowano PESEL=93050761890 oraz dokument ZTK376359. Zgłoszono błąd adresu: ul. Krakowska 137 m. 88, 87-300 Rzeszów.
+Logi: client_ip=97.238.161.241; device_mac=FC:B8:DD:D3:26:7F; gps=53.741249, 21.443991.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marta Piotrowska (PESEL:09310758234).
+Pojazd VIN:L6UNZ95W8L54XLCTJ tablica:KI CW3860 — odbiór pod adresem ul. Ogrodowa 89 m. 95, 64-216 Kraków.
+Kontakt awaryjny: 255-886-395 / marta.piotrowska@firma.test.
+------------------------------------------------------------------------------------------
+CSV-like: 39;Kowalczyk;Wojciech;wkowalczyk@corp.test;243-735-422;ul. Polna 51, 63-864 Poznań;PESEL=69011421569;NIP=2097972916;IBAN=PL72343303489865065472494034;BIC=EDFHPLD6GP3
+Meta{id_card:'CUZ597802', passport:"BY5433638", card:4747226862661619, imei:003404420153822, ip:'109.90.245.120', mac:'F4:16:C2:54:5D:4E'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-957936-X97] Klient: Katarzyna Krawczyk (PESEL 72042291261, Dowód: NGB618019, Paszport: NM2638147).
+Adres dostawy: ul. Lipowa 50A m. 64, 15-840 Wrocław. Telefon kontaktowy: 945 745 252. E-mail: krawczyk40@demo.local.
+Płatność: karta 4205 4631 5584 0016 / rachunek PL49165512219116560471783211 (SWIFT/BIC: BUFMPLCKRXS).
+Urządzenie: IMEI=668850159088665, IP=198.195.71.146, MAC=D8:D5:25:07:15:69.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0041/02/2026 — Nabywca: DELTA-041 s.c., NIP: PL3023896639, REGON: 925241271, KRS: 8139116633.
+Osoba kontaktowa: Kozłowski, Paweł | tel. +48 985 158 593 | e-mail pawelkozlowski@mail.example.
+Adres siedziby/korespondencji: ul. Warszawska 35, 16-958 Warszawa.
+Rachunek do zwrotu: PL06679025961017681009279059 (BIC XGZVPLSPO44).
+------------------------------------------------------------------------------------------
+Notatka służbowa (42/2026): rozmowa z "Maria Wiśniewska" <wisniewska42@testmail.pl>; tel:309329962.
+Zweryfikowano PESEL=96111828211 oraz dokument HSF498390. Zgłoszono błąd adresu: ul. Krakowska 1, 13-751 Warszawa.
+Logi: client_ip=8.55.98.53; device_mac=13:A9:A8:5C:A7:C5; gps=50.744356, 19.897262.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Michał Kozłowski (PESEL:01280301546).
+Pojazd VIN:4RDWN5EP093T83279 tablica:TO M9604 — odbiór pod adresem ul. Zielona 121, 35-081 Gliwice.
+Kontakt awaryjny: +48-789-168-707 / michal43@example.com.
+------------------------------------------------------------------------------------------
+CSV-like: 44;Grabowska;Maria;mgrabowska@testmail.pl;+48-554-248-125;ul. Kwiatowa 146 m. 12, 53-800 Sosnowiec;PESEL=06321308230;NIP=8021649307;IBAN=PL31084998864713769906963215;BIC=TVSVPLQOUDE
+Meta{id_card:'SJH513028', passport:"DX5772020", card:4459872151053211, imei:387310038283344, ip:'100.237.70.50', mac:'EB:CD:66:C6:C7:0E'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-766474-E24] Klient: Marcin Nowak (PESEL 67093094994, Dowód: XZB599875, Paszport: BK9023637).
+Adres dostawy: ul. Krótka 82 m. 70, 48-681 Katowice. Telefon kontaktowy: +48-399-772-214. E-mail: "nowak45"@corp.test.
+Płatność: karta 5688 0653 0697 5895 / rachunek PL61279880814471152094610659 (SWIFT/BIC: AMCGPLUU48A).
+Urządzenie: IMEI=075340323584537, IP=68.43.218.240, MAC=80:52:18:7E:B6:B6.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0046/02/2026 — Nabywca: NOVO-046 sp.k., NIP: PL9511631924, REGON: 611145346, KRS: 8897298033.
+Osoba kontaktowa: Krawczyk, Zuzanna | tel. 139 095 801 | e-mail zkrawczyk@xmail.test.
+Adres siedziby/korespondencji: ul. Zielona 89, 78-048 Radom.
+Rachunek do zwrotu: PL30809664156456939884160823 (BIC AKFBPLNN2X5).
+------------------------------------------------------------------------------------------
+Notatka służbowa (47/2026): rozmowa z "Kamil Nowak" <kamil47@demo.local>; tel:278809550.
+Zweryfikowano PESEL=68033145592 oraz dokument FQZ879937. Zgłoszono błąd adresu: ul. Ogrodowa 122 m. 25, 52-782 Lublin.
+Logi: client_ip=121.58.91.8; device_mac=17:68:85:77:CD:37; gps=52.572448, 19.314171.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Monika Wójcik (PESEL:01261499965).
+Pojazd VIN:XN8DJ2JYE1R0JC373 tablica:ND O06707 — odbiór pod adresem ul. Piłsudskiego 147/12, 44-068 Gliwice.
+Kontakt awaryjny: 143-555-787 / wojcik48@example.com.
+------------------------------------------------------------------------------------------
+CSV-like: 49;Jankowski;Szymon;sjankowski@xmail.test;618 331 639;ul. Leśna 40 m. 24, 12-968 Białystok;PESEL=71063059991;NIP=2841203932;IBAN=PL19846262883403488650012869;BIC=EIWTPLCNQC9
+Meta{id_card:'PGB269057', passport:"HT1066944", card:5470550252440991, imei:575437525543950, ip:'242.82.69.247', mac:'D3:5B:05:5B:A7:DC'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-981810-Y23] Klient: Anna Kozłowska (PESEL 95061538782, Dowód: PMY934233, Paszport: GH4607908).
+Adres dostawy: ul. Morska 105/2 m. 8, 33-781 Radom. Telefon kontaktowy: 039 808 357. E-mail: "anna.kozlowska"@przyklad.pl.
+Płatność: karta 5423 2546 9216 1591 / rachunek PL86977364362429705997722982 (SWIFT/BIC: BOAGPL59IUT).
+Urządzenie: IMEI=652925457530038, IP=228.242.124.102, MAC=40:79:AF:CE:CC:CC.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0051/02/2026 — Nabywca: ARKA-051 S.A., NIP: PL7484191057, REGON: 146808000, KRS: 6966084972.
+Osoba kontaktowa: Nowak, Jan | tel. +48-907-748-079 | e-mail nowak51@example.com.
+Adres siedziby/korespondencji: ul. Polna 189 m. 81, 09-147 Częstochowa.
+Rachunek do zwrotu: PL44475707132776087402590004 (BIC JWEBPLFFXTL).
+------------------------------------------------------------------------------------------
+Notatka służbowa (52/2026): rozmowa z "Zuzanna Wiśniewska" <zwisniewska@poczta.example>; tel:+48-835-647-094.
+Zweryfikowano PESEL=66112722487 oraz dokument RAH552581. Zgłoszono błąd adresu: ul. Krakowska 102A, 29-712 Rzeszów.
+Logi: client_ip=97.112.47.16; device_mac=78:51:AE:B0:F2:D9; gps=54.325557, 16.156941.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Karol Kamiński (PESEL:62053029876).
+Pojazd VIN:R8BZ4X3SFRMUTG8A8 tablica:KR I8472 — odbiór pod adresem ul. Lipowa 118/2, 17-301 Częstochowa.
+Kontakt awaryjny: 678-018-895 / karol.kaminski@przyklad.pl.
+------------------------------------------------------------------------------------------
+CSV-like: 54;Grabowska;Iwona;iwona.grabowska@demo.local;+48-476-979-831;ul. Piłsudskiego 20, 66-310 Bydgoszcz;PESEL=85102141350;NIP=2717113692;IBAN=PL10486000187617624808970964;BIC=COAVPL27JKO
+Meta{id_card:'WCN217038', passport:"NQ4643478", card:4113041837464280, imei:142322506586232, ip:'218.76.53.240', mac:'09:98:02:68:99:CD'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-580956-V11] Klient: Rafał Lewandowski (PESEL 97042544942, Dowód: YAA461451, Paszport: JH7130137).
+Adres dostawy: ul. Sienkiewicza 3 m. 42, 96-147 Poznań. Telefon kontaktowy: +48-407-169-695. E-mail: rafallewandowski@corp.test.
+Płatność: karta 5655 5385 7366 8211 / rachunek PL21717334598854611937315134 (SWIFT/BIC: ARMYPLDOCQH).
+Urządzenie: IMEI=721244715779287, IP=164.175.39.113, MAC=34:C8:0F:E9:4E:62.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0056/02/2026 — Nabywca: METRO-056 Sp. z o.o., NIP: PL3878533307, REGON: 442268051, KRS: 1909814721.
+Osoba kontaktowa: Kamińska, Anna | tel. 331426767 | e-mail annakaminska@testmail.pl.
+Adres siedziby/korespondencji: al. Niepodległości 13C m. 3, 33-024 Gliwice.
+Rachunek do zwrotu: PL33016326447115526417921015 (BIC XQUYPL3G8T9).
+------------------------------------------------------------------------------------------
+Notatka służbowa (57/2026): rozmowa z "Wojciech Piotrowski" <"wpiotrowski"@corp.test>; tel:+48 842 824 939.
+Zweryfikowano PESEL=57082083489 oraz dokument MLR575092. Zgłoszono błąd adresu: ul. Krakowska 151C m. 73, 31-686 Kielce.
+Logi: client_ip=203.239.90.68; device_mac=C3:77:7E:30:0E:6E; gps=49.853371, 14.525895.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Anna Wójcik (PESEL:66032014110).
+Pojazd VIN:6CEKET8W7M7U514DS tablica:OP B06167 — odbiór pod adresem ul. Krótka 170, 84-324 Gdańsk.
+Kontakt awaryjny: +48-016-278-279 / anna58@przyklad.pl.
+------------------------------------------------------------------------------------------
+CSV-like: 59;Lewandowski;Grzegorz;glewandowski@firma.test;918 706 632;ul. Słoneczna 155, 12-316 Lublin;PESEL=75082530763;NIP=5865553355;IBAN=PL16903223093597522223386785;BIC=ZDRNPLO7J3G
+Meta{id_card:'JZF150891', passport:"AX6284678", card:4375316228388876, imei:231963606514508, ip:'60.190.16.209', mac:'97:BC:7C:5C:32:FE'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-354615-D50] Klient: Katarzyna Michalska (PESEL 95012985601, Dowód: GLP069250, Paszport: NP5018829).
+Adres dostawy: ul. Leśna 109, 85-348 Gdańsk. Telefon kontaktowy: 246664881. E-mail: michalska60@xmail.test.
+Płatność: karta 5162 1306 7720 5530 / rachunek PL05359346872439493650837599 (SWIFT/BIC: CKDMPLU4UGD).
+Urządzenie: IMEI=348781176696201, IP=247.171.22.154, MAC=64:74:C4:9C:DE:DD.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0061/02/2026 — Nabywca: PROX-061 s.c., NIP: PL2753325788, REGON: 650254237, KRS: 2963570814.
+Osoba kontaktowa: Kowalski, Szymon | tel. 884 365 589 | e-mail szymonkowalski@testmail.pl.
+Adres siedziby/korespondencji: ul. Ogrodowa 1 m. 51, 22-403 Gliwice.
+Rachunek do zwrotu: PL92223071827275111563747021 (BIC YZAJPLOO5T3).
+------------------------------------------------------------------------------------------
+Notatka służbowa (62/2026): rozmowa z "Paulina Wójcik" <"paulinawojcik"@corp.test>; tel:987656216.
+Zweryfikowano PESEL=73052631085 oraz dokument VOM826969. Zgłoszono błąd adresu: ul. Ogrodowa 195/7 m. 98, 24-564 Bydgoszcz.
+Logi: client_ip=1.167.15.220; device_mac=CC:5B:D1:E5:5A:72; gps=51.400461, 18.415778.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Rafał Pawłowski (PESEL:00282737441).
+Pojazd VIN:90YKH73E71RA9JTVK tablica:KR JP3153 — odbiór pod adresem ul. Sienkiewicza 184A m. 1, 43-609 Białystok.
+Kontakt awaryjny: 654-690-652 / rafal.pawlowski@xmail.test.
+------------------------------------------------------------------------------------------
+CSV-like: 64;Mazur;Iwona;"iwona64"@anon.test;299282714;ul. Różana 198, 76-583 Kielce;PESEL=95102220038;NIP=5409933768;IBAN=PL51260424145066714630724166;BIC=DLKBPL08FNA
+Meta{id_card:'RMV040515', passport:"VL7707996", card:5825203832806887, imei:189484534868675, ip:'66.74.15.172', mac:'BD:E5:64:59:66:FD'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-857732-Q74] Klient: Karol Kozłowski (PESEL 87082881732, Dowód: HWL819950, Paszport: LM8229942).
+Adres dostawy: ul. Długa 145B m. 98, 16-627 Katowice. Telefon kontaktowy: +48 653 884 573. E-mail: karol.kozlowski@anon.test.
+Płatność: karta 4620 8649 5009 4848 / rachunek PL34319140116017462337755042 (SWIFT/BIC: HOLMPLZZT3W).
+Urządzenie: IMEI=238854534681347, IP=107.249.218.198, MAC=79:A2:37:91:DF:10.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0066/02/2026 — Nabywca: ARKA-066 Sp. z o.o., NIP: PL7416600460, REGON: 489192242, KRS: 9871343254.
+Osoba kontaktowa: Kozłowska, Sylwia | tel. 874-486-178 | e-mail kozlowska66@testmail.pl.
+Adres siedziby/korespondencji: ul. Ogrodowa 32 m. 25, 03-097 Częstochowa.
+Rachunek do zwrotu: PL86692805936438232941052971 (BIC OQYTPLX3NZ3).
+------------------------------------------------------------------------------------------
+Notatka służbowa (67/2026): rozmowa z "Tomasz Szymański" <szymanski67@przyklad.pl>; tel:544 433 747.
+Zweryfikowano PESEL=82071122403 oraz dokument SFY700427. Zgłoszono błąd adresu: ul. Warszawska 174 m. 89, 76-303 Warszawa.
+Logi: client_ip=212.46.85.59; device_mac=0B:B2:37:B1:FA:6B; gps=49.410678, 20.631409.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Paulina Kowalczyk (PESEL:76062418664).
+Pojazd VIN:4699UZP9K0693RAMX tablica:BI O6585 — odbiór pod adresem ul. Zielona 32 m. 83, 77-737 Częstochowa.
+Kontakt awaryjny: 182356029 / pkowalczyk@testmail.pl.
+------------------------------------------------------------------------------------------
+CSV-like: 69;Lewandowski;Przemysław;lewandowski69@przyklad.pl;+48 780 076 941;ul. Piłsudskiego 165/2 m. 42, 82-579 Kielce;PESEL=88012482056;NIP=8754821995;IBAN=PL14805250859765774967489192;BIC=XRSNPL73LTV
+Meta{id_card:'ENI620372', passport:"ZI3590317", card:5467862624392523, imei:232360285705650, ip:'114.117.78.37', mac:'27:A7:60:99:97:B2'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-537267-E48] Klient: Marta Szymańska (PESEL 51122074352, Dowód: MQH528681, Paszport: CG3480032).
+Adres dostawy: ul. Krakowska 87 m. 27, 14-570 Kielce. Telefon kontaktowy: 811182089. E-mail: szymanska70@testmail.pl.
+Płatność: karta 5574 7490 9668 9243 / rachunek PL66628405229375088680629632 (SWIFT/BIC: BHGBPL8YDDB).
+Urządzenie: IMEI=749954142096405, IP=12.248.96.123, MAC=84:FB:E4:B9:BE:53.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0071/02/2026 — Nabywca: VISTA-071 s.c., NIP: PL5195891385, REGON: 455567993, KRS: 5761507982.
+Osoba kontaktowa: Krawczyk, Adam | tel. 367 245 736 | e-mail krawczyk71@demo.local.
+Adres siedziby/korespondencji: ul. Ogrodowa 74A m. 83, 14-786 Katowice.
+Rachunek do zwrotu: PL92654535309922672733241215 (BIC GOBZPLWO2V4).
+------------------------------------------------------------------------------------------
+Notatka służbowa (72/2026): rozmowa z "Anna Grabowska" <anna72@testmail.pl>; tel:584-093-792.
+Zweryfikowano PESEL=06242899682 oraz dokument ZQV414672. Zgłoszono błąd adresu: ul. Szkolna 45 m. 58, 90-085 Gdańsk.
+Logi: client_ip=21.142.127.112; device_mac=E9:A8:18:EE:6F:04; gps=54.203710, 15.315190.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Bartosz Mazur (PESEL:70041275754).
+Pojazd VIN:VGB5H6686ZG3UMGV8 tablica:PO U3990 — odbiór pod adresem ul. Krótka 118/7 m. 92, 93-399 Szczecin.
+Kontakt awaryjny: 733-368-177 / bartosz.mazur@anon.test.
+------------------------------------------------------------------------------------------
+CSV-like: 74;Kozłowska;Magdalena;kozlowska74@corp.test;+48 560 332 803;ul. Szkolna 56, 50-688 Toruń;PESEL=83051102532;NIP=1271058176;IBAN=PL33920423544354525290798136;BIC=WBQJPLW1DKC
+Meta{id_card:'IPZ315622', passport:"FN7841800", card:5251357960107750, imei:820697223234522, ip:'226.126.6.212', mac:'95:29:51:7A:98:8A'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-449334-Y90] Klient: Marcin Kozłowski (PESEL 54032073480, Dowód: GOO850649, Paszport: HJ4672152).
+Adres dostawy: ul. Leśna 79/7, 48-874 Radom. Telefon kontaktowy: +48-671-996-163. E-mail: mkozlowski@testmail.pl.
+Płatność: karta 4477 9671 1004 2433 / rachunek PL05738453380091717324747526 (SWIFT/BIC: NGLAPL0AGNF).
+Urządzenie: IMEI=725370260882613, IP=186.166.249.137, MAC=8C:BE:4A:36:DD:DD.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0076/02/2026 — Nabywca: ARKA-076 sp.k., NIP: PL5978216783, REGON: 644607924, KRS: 6847596805.
+Osoba kontaktowa: Dąbrowska, Marta | tel. 503 181 293 | e-mail "dabrowska76"@poczta.example.
+Adres siedziby/korespondencji: ul. Kościuszki 121 m. 77, 83-253 Gdańsk.
+Rachunek do zwrotu: PL25320256764650051213536150 (BIC CKWLPL8PYZT).
+------------------------------------------------------------------------------------------
+Notatka służbowa (77/2026): rozmowa z "Bartosz Kamiński" <kaminski77@firma.test>; tel:607931906.
+Zweryfikowano PESEL=88112477983 oraz dokument PCY561380. Zgłoszono błąd adresu: ul. Polna 33, 00-152 Gdańsk.
+Logi: client_ip=13.34.134.224; device_mac=13:2D:38:18:80:B6; gps=53.620748, 17.171634.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marta Wójcik (PESEL:57021281196).
+Pojazd VIN:5EWP8V2EV65M8R4MX tablica:EL M3394 — odbiór pod adresem al. Niepodległości 7 m. 70, 31-189 Częstochowa.
+Kontakt awaryjny: 221 419 285 / marta78@example.com.
+------------------------------------------------------------------------------------------
+CSV-like: 79;Mazur;Michał;"michal79"@poczta.example;+48 300 087 551;ul. Mickiewicza 190B m. 45, 97-356 Radom;PESEL=90050589844;NIP=5069898374;IBAN=PL12252496644120350384139752;BIC=HNSAPL9Z5WN
+Meta{id_card:'GCN784932', passport:"ZS4429042", card:5370164446274945, imei:268195174824522, ip:'118.86.144.222', mac:'63:A8:F9:B6:26:02'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-279042-M11] Klient: Karolina Grabowska (PESEL 93053021117, Dowód: PEH013948, Paszport: PJ0667950).
+Adres dostawy: ul. Sienkiewicza 153 m. 25, 70-863 Opole. Telefon kontaktowy: 714832724. E-mail: grabowska80@anon.test.
+Płatność: karta 4962 3571 2430 1563 / rachunek PL16119118683669322598069638 (SWIFT/BIC: GZVWPLU6M1V).
+Urządzenie: IMEI=501919120447040, IP=6.253.200.236, MAC=1F:14:1C:4B:28:67.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0081/02/2026 — Nabywca: PROX-081 s.c., NIP: PL2327304763, REGON: 705426348, KRS: 2893659684.
+Osoba kontaktowa: Pawłowski, Michał | tel. 867 438 272 | e-mail michalpawlowski@przyklad.pl.
+Adres siedziby/korespondencji: al. Jana Pawła II 64 m. 76, 66-837 Toruń.
+Rachunek do zwrotu: PL59618396930600451743925662 (BIC JYTXPLH1L3D).
+------------------------------------------------------------------------------------------
+Notatka służbowa (82/2026): rozmowa z "Monika Zając" <monika.zajac@firma.test>; tel:+48-562-670-416.
+Zweryfikowano PESEL=65092668905 oraz dokument EBF136964. Zgłoszono błąd adresu: ul. Mickiewicza 187, 04-673 Warszawa.
+Logi: client_ip=8.163.217.205; device_mac=81:EE:43:27:B4:E1; gps=53.267738, 19.515648.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Adam Piotrowski (PESEL:63031869680).
+Pojazd VIN:G99ZLEHJ4WN789TEC tablica:KI EY2595 — odbiór pod adresem ul. Ogrodowa 130A, 70-066 Katowice.
+Kontakt awaryjny: 800 257 295 / piotrowski83@corp.test.
+------------------------------------------------------------------------------------------
+CSV-like: 84;Grabowska;Anna;anna84@przyklad.pl;626-615-664;ul. Długa 3 m. 48, 04-460 Opole;PESEL=77060194037;NIP=2239120621;IBAN=PL85435307129001243221906710;BIC=COTHPLVB5SU
+Meta{id_card:'GAN317338', passport:"IO6815047", card:4043494742066490, imei:880145130950907, ip:'136.215.158.226', mac:'91:BB:E1:83:3B:11'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-945971-G49] Klient: Grzegorz Lewandowski (PESEL 84022689449, Dowód: UUO539574, Paszport: KS2928458).
+Adres dostawy: ul. Krótka 145/12 m. 81, 55-485 Kielce. Telefon kontaktowy: +48 404 973 330. E-mail: grzegorzlewandowski@xmail.test.
+Płatność: karta 4655 5604 5727 9835 / rachunek PL13791547983840913715108397 (SWIFT/BIC: DTGFPLFX5SE).
+Urządzenie: IMEI=620785492115365, IP=124.81.185.148, MAC=BE:7A:66:DC:12:41.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0086/02/2026 — Nabywca: OMEGA-086 S.A., NIP: PL1344559904, REGON: 355442823, KRS: 9404501492.
+Osoba kontaktowa: Zając, Weronika | tel. 170690780 | e-mail weronikazajac@mail.example.
+Adres siedziby/korespondencji: ul. Sienkiewicza 141B, 96-585 Bydgoszcz.
+Rachunek do zwrotu: PL44126233014779215743746835 (BIC WVVBPLEK6AX).
+------------------------------------------------------------------------------------------
+Notatka służbowa (87/2026): rozmowa z "Wojciech Mazur" <wojciech87@testmail.pl>; tel:078303642.
+Zweryfikowano PESEL=59082660417 oraz dokument ZYC367952. Zgłoszono błąd adresu: al. Niepodległości 44, 46-860 Sosnowiec.
+Logi: client_ip=147.236.153.145; device_mac=4D:6A:80:35:B1:BD; gps=53.276453, 19.865635.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Agnieszka Szymańska (PESEL:61031467242).
+Pojazd VIN:ZF86UKMWXCNNKTSPB tablica:LU C26757 — odbiór pod adresem ul. Leśna 37, 99-441 Toruń.
+Kontakt awaryjny: 256976060 / agnieszka88@anon.test.
+------------------------------------------------------------------------------------------
+CSV-like: 89;Kamiński;Jan;jan89@przyklad.pl;+48 102 983 972;ul. Mickiewicza 168 m. 49, 32-432 Radom;PESEL=72100349088;NIP=7274631739;IBAN=PL82640096668333581570111947;BIC=XUNRPLN0FHJ
+Meta{id_card:'GVO926889', passport:"CP1577717", card:4437272917438543, imei:882749060000500, ip:'156.246.251.132', mac:'A7:41:D7:6A:27:EA'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-967067-H80] Klient: Monika Pawłowska (PESEL 58120861780, Dowód: UKV065513, Paszport: YY8736631).
+Adres dostawy: ul. Piłsudskiego 67 m. 50, 84-337 Warszawa. Telefon kontaktowy: 323-211-973. E-mail: monika90@przyklad.pl.
+Płatność: karta 5199 6550 0883 6612 / rachunek PL51911345626336002951848142 (SWIFT/BIC: IPZDPL6MRTE).
+Urządzenie: IMEI=074237358681204, IP=38.108.61.53, MAC=6D:04:47:51:99:01.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0091/02/2026 — Nabywca: KOMPAS-091 sp.k., NIP: PL1983541093, REGON: 580683633, KRS: 6131604686.
+Osoba kontaktowa: Kowalski, Karol | tel. 368966588 | e-mail karolkowalski@przyklad.pl.
+Adres siedziby/korespondencji: ul. Mickiewicza 75, 60-853 Bydgoszcz.
+Rachunek do zwrotu: PL97012140264666503104854856 (BIC TZDPPLZZBO4).
+------------------------------------------------------------------------------------------
+Notatka służbowa (92/2026): rozmowa z "Anna Krawczyk" <"akrawczyk"@testmail.pl>; tel:+48 859 678 549.
+Zweryfikowano PESEL=57061728866 oraz dokument CHL930625. Zgłoszono błąd adresu: al. Niepodległości 193, 04-582 Warszawa.
+Logi: client_ip=233.19.191.183; device_mac=32:61:4F:E5:13:12; gps=53.268244, 15.884798.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Marek Piotrowski (PESEL:60031307189).
+Pojazd VIN:3S5RDGUWB7DKDGVLK tablica:PO WV06411 — odbiór pod adresem ul. Lipowa 60 m. 66, 78-146 Poznań.
+Kontakt awaryjny: 402366909 / piotrowski93@firma.test.
+------------------------------------------------------------------------------------------
+CSV-like: 94;Kowalczyk;Zuzanna;zkowalczyk@poczta.example;+48 576 891 391;ul. Mickiewicza 191, 28-600 Olsztyn;PESEL=56110530296;NIP=4114946585;IBAN=PL05366694933496493772083170;BIC=MAFKPLCTDIK
+Meta{id_card:'TRO947399', passport:"SY5974705", card:5623685541703107, imei:249612310722726, ip:'153.148.127.49', mac:'F1:1F:C1:2B:AD:47'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-886634-Q71] Klient: Marek Lewandowski (PESEL 78050457783, Dowód: IUS509432, Paszport: VT0078053).
+Adres dostawy: ul. Różana 26C, 96-069 Kielce. Telefon kontaktowy: 748-446-737. E-mail: mlewandowski@mail.example.
+Płatność: karta 5878 8754 5944 6952 / rachunek PL21661929884916073550330380 (SWIFT/BIC: UNHYPLWK32C).
+Urządzenie: IMEI=110230274995196, IP=223.223.125.40, MAC=1A:CE:32:23:94:6D.
+------------------------------------------------------------------------------------------
+Faktura VAT nr FV/0096/02/2026 — Nabywca: METRO-096 s.c., NIP: PL6492304788, REGON: 104008165, KRS: 6925253699.
+Osoba kontaktowa: Kowalczyk, Maria | tel. 289-081-227 | e-mail maria.kowalczyk@przyklad.pl.
+Adres siedziby/korespondencji: ul. Zielona 171 m. 12, 31-091 Wrocław.
+Rachunek do zwrotu: PL73466657680803393528913863 (BIC SCPQPLHMW5U).
+------------------------------------------------------------------------------------------
+Notatka służbowa (97/2026): rozmowa z "Adam Szymański" <aszymanski@xmail.test>; tel:893327859.
+Zweryfikowano PESEL=01211975972 oraz dokument YIS450860. Zgłoszono błąd adresu: ul. Kwiatowa 71, 90-862 Szczecin.
+Logi: client_ip=73.142.133.133; device_mac=D4:DE:40:66:B5:8E; gps=49.670899, 23.353842.
+------------------------------------------------------------------------------------------
+Rejestr pojazdu / umowa użyczenia: użytkownik Julia Zielińska (PESEL:96100500810).
+Pojazd VIN:L1CLTUWJBSLH2W7B0 tablica:ND U31559 — odbiór pod adresem ul. Lipowa 54, 47-173 Radom.
+Kontakt awaryjny: 243550057 / julia.zielinska@firma.test.
+------------------------------------------------------------------------------------------
+CSV-like: 99;Mazur;Adam;adam99@przyklad.pl;890 017 808;al. Jana Pawła II 93/7 m. 9, 53-010 Kielce;PESEL=85050196408;NIP=9505320823;IBAN=PL69544094070188291599473123;BIC=NAIHPLWVZZS
+Meta{id_card:'ISI696746', passport:"MJ4633297", card:5018363902449219, imei:912796573691629, ip:'215.10.16.193', mac:'4C:FD:FE:D1:EF:A3'}
+------------------------------------------------------------------------------------------
+[ZGŁOSZENIE #ORD-780582-L71] Klient: Aleksandra Piotrowska (PESEL 95020367745, Dowód: CRM540366, Paszport: CO6387263).
+Adres dostawy: ul. Krakowska 199, 19-656 Lublin. Telefon kontaktowy: 619717859. E-mail: aleksandrapiotrowska@mail.example.
+Płatność: karta 5269 1880 3550 6158 / rachunek PL69546242999773164303655826 (SWIFT/BIC: EVLQPLIP05B).
+Urządzenie: IMEI=314098796447743, IP=19.47.231.161, MAC=12:BE:43:82:E0:3C.
+------------------------------------------------------------------------------------------
+
+ANEKS: PRZYPADKI BRZEGOWE
+1) Wiele danych w jednej linii + różne separatory:
+Dominika Woźniak|+48-225-638-280|dominikawozniak@przyklad.pl|06321735265|PL59399500181909281969668670 ; Bartosz Kamiński|607931906|kaminski77@firma.test|88112477983|PL67008789159498357103775118 ; Michał Pawłowski|867 438 272|michalpawlowski@przyklad.pl|03322965099|PL59618396930600451743925662 ; Przemysław Lewandowski|+48 780 076 941|lewandowski69@przyklad.pl|88012482056|PL14805250859765774967489192 ; Dominika Mazur|214138712|dominika.mazur@demo.local|04280457309|PL58991729367862855482794781 ; Agnieszka Dąbrowska|+48 632 264 299|dabrowska22@xmail.test|97012906749|PL17265767203763495067434937 ; Marcin Zając|+48 373 850 145|mzajac@mail.example|63121900248|PL65535026706706330455366638 ; Michał Kozłowski|+48-789-168-707|michal43@example.com|01280301546|PL31292956040312787214207047 ; Karol Kowalski|368966588|karolkowalski@przyklad.pl|93102599882|PL97012140264666503104854856 ; Zuzanna Kowalczyk|+48 576 891 391|zkowalczyk@poczta.example|56110530296|PL05366694933496493772083170 ; Natalia Michalska|587-670-656|"michalska28"@anon.test|59121303846|PL75826681927658158212030660 ; Adam Piotrowski|800 257 295|piotrowski83@corp.test|63031869680|PL12692942718350708489154384
+
+2) Adresy e-mail z cudzysłowami i nietypowym formatem:
+- "marek25"@anon.test
+- "szymonkowalski"@testmail.pl
+- "szymanski67"@przyklad.pl
+- "kaminski77"@firma.test
+- "sjankowski"@xmail.test
+- "nowak45"@corp.test
+- "wojciech87"@testmail.pl
+- "dabrowska76"@poczta.example
+
+3) Telefony z różnym spacingiem i znakami:
+- tel(587-670-656) / tel_alt:+48(587)670-656
+- tel(513 714 815) / tel_alt:+48(513)714-815
+- tel(103-714-081) / tel_alt:+48(103)714-081
+- tel(170690780) / tel_alt:+48(170)690-780
+- tel(+48 373 850 145) / tel_alt:+48(483)738-501
+- tel(801-540-644) / tel_alt:+48(801)540-644
+- tel(+48-407-169-695) / tel_alt:+48(484)071-696
+- tel(+48-835-647-094) / tel_alt:+48(488)356-470
+- tel(278809550) / tel_alt:+48(278)809-550
+- tel(800 257 295) / tel_alt:+48(800)257-295
+
+4) Numery kart bez spacji, ze spacjami i z myślnikami (w każdej pozycji INNY numer):
+- 4548342522140531 | 4548 3425 2214 0531 | 4548-3425-2214-0531
+- 5395463787999326 | 5395 4637 8799 9326 | 5395-4637-8799-9326
+- 5321421070569510 | 5321 4210 7056 9510 | 5321-4210-7056-9510
+- 5919320672310741 | 5919 3206 7231 0741 | 5919-3206-7231-0741
+- 4464790126631099 | 4464 7901 2663 1099 | 4464-7901-2663-1099
+- 5666878911730711 | 5666 8789 1173 0711 | 5666-8789-1173-0711
+- 4250706240627465 | 4250 7062 4062 7465 | 4250-7062-4062-7465
+- 5685716337574974 | 5685 7163 3757 4974 | 5685-7163-3757-4974
+
+5) Różne identyfikatory urządzeń w logu JSON:
+{"user":"Paulina Wójcik","ip":"1.167.15.220","mac":"CC:5B:D1:E5:5A:72","imei":"336363754395166","email":""paulinawojcik"@corp.test","phone":"987656216"}
+{"user":"Magdalena Kozłowska","ip":"226.126.6.212","mac":"95:29:51:7A:98:8A","imei":"820697223234522","email":"kozlowska74@corp.test","phone":"+48 560 332 803"}
+{"user":"Barbara Kowalska","ip":"125.53.192.193","mac":"A9:A2:CE:28:4F:6F","imei":"671350611641879","email":"bkowalska@example.com","phone":"671 771 003"}
+{"user":"Bartosz Mazur","ip":"237.230.111.154","mac":"54:C3:02:31:80:01","imei":"004545772691592","email":"bartosz.mazur@anon.test","phone":"733-368-177"}
+{"user":"Karol Kowalski","ip":"14.133.43.8","mac":"32:68:F8:6E:55:4B","imei":"883891584617722","email":"karolkowalski@przyklad.pl","phone":"368966588"}
+{"user":"Jan Kamiński","ip":"156.246.251.132","mac":"A7:41:D7:6A:27:EA","imei":"882749060000500","email":"jan89@przyklad.pl","phone":"+48 102 983 972"}
+
+KONIEC PLIKU

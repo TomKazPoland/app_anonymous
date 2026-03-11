@@ -1,0 +1,171 @@
+{
+  "input_file": "/home/potrzebuje/Projects/anonymous_app/test_files/anonimizacja_test_100_podmiotow.txt",
+  "output_file": "/home/potrzebuje/Projects/anonymous_app/test_files/test_output_20260311_110135/output_anon.txt",
+  "global_total": 1055,
+  "global_masked": 1036,
+  "global_success_pct": 98.2,
+  "by_type": {
+    "PESEL": {
+      "input_count": 92,
+      "remaining_in_output": 0,
+      "masked": 92,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "PHONE": {
+      "input_count": 158,
+      "remaining_in_output": 0,
+      "masked": 158,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "EMAIL": {
+      "input_count": 100,
+      "remaining_in_output": 0,
+      "masked": 100,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "NIP": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": []
+    },
+    "VAT_PL": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": []
+    },
+    "REGON": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "KRS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "IDCARD": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "PASSPORT": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "IBAN": {
+      "input_count": 72,
+      "remaining_in_output": 0,
+      "masked": 72,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "BIC": {
+      "input_count": 63,
+      "remaining_in_output": 3,
+      "masked": 60,
+      "success_pct": 95.2,
+      "sample_leaks": [
+        "FIKCYJNE",
+        "HORYZONT",
+        "BRZEGOWE"
+      ]
+    },
+    "PAN": {
+      "input_count": 110,
+      "remaining_in_output": 8,
+      "masked": 102,
+      "success_pct": 92.7,
+      "sample_leaks": [
+        "5409148807293791",
+        "357621828476495",
+        "5401 6846 3181 3640",
+        "5859348430507413",
+        "088200877203250",
+        "4273 1886 9799 6529",
+        "179742331784934",
+        "4211063877555021"
+      ]
+    },
+    "IP": {
+      "input_count": 66,
+      "remaining_in_output": 0,
+      "masked": 66,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "MAC": {
+      "input_count": 66,
+      "remaining_in_output": 0,
+      "masked": 66,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "IMEI": {
+      "input_count": 46,
+      "remaining_in_output": 8,
+      "masked": 38,
+      "success_pct": 82.6,
+      "sample_leaks": [
+        "357621828476495",
+        "088200877203250",
+        "179742331784934",
+        "221130688234149",
+        "124137635132936",
+        "195315305919680",
+        "996339694987268",
+        "511714275858898"
+      ]
+    },
+    "VIN": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "GPS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "POSTCODE": {
+      "input_count": 122,
+      "remaining_in_output": 0,
+      "masked": 122,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "PERSON_CTX": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": []
+    },
+    "ADDRESS_CTX": {
+      "input_count": 40,
+      "remaining_in_output": 0,
+      "masked": 40,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    }
+  }
+}

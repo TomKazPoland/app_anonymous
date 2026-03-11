@@ -1,0 +1,230 @@
+{
+  "input_file": "/home/potrzebuje/Projects/anonymous_app/test_files/anonimizacja_test_100_podmiotow.txt",
+  "output_file": "/home/potrzebuje/Projects/anonymous_app/test_files/test_output_20260311_002933/output_anon.txt",
+  "global_total": 1055,
+  "global_masked": 983,
+  "global_success_pct": 93.2,
+  "by_type": {
+    "PESEL": {
+      "input_count": 92,
+      "remaining_in_output": 0,
+      "masked": 92,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "PHONE": {
+      "input_count": 158,
+      "remaining_in_output": 8,
+      "masked": 150,
+      "success_pct": 94.9,
+      "sample_leaks": [
+        "+48(587)670-656",
+        "+48(513)714-815",
+        "+48(103)714-081",
+        "+48(170)690-780",
+        "+48(483)738-501",
+        "+48(801)540-644",
+        "+48(484)071-696",
+        "+48(488)356-470"
+      ]
+    },
+    "EMAIL": {
+      "input_count": 100,
+      "remaining_in_output": 0,
+      "masked": 100,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "NIP": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": []
+    },
+    "VAT_PL": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": []
+    },
+    "REGON": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "KRS": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "IDCARD": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "PASSPORT": {
+      "input_count": 20,
+      "remaining_in_output": 0,
+      "masked": 20,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "IBAN": {
+      "input_count": 72,
+      "remaining_in_output": 8,
+      "masked": 64,
+      "success_pct": 88.9,
+      "sample_leaks": [
+        "PL65686643756877150712772167",
+        "PL42127000608218511018347223",
+        "PL88564697825394959412025677",
+        "PL54549407968497276450844422",
+        "PL65535026706706330455366638",
+        "PL58991729367862855482794781",
+        "PL79178320323611559815238261",
+        "PL83533901582472283946656845"
+      ]
+    },
+    "BIC": {
+      "input_count": 63,
+      "remaining_in_output": 8,
+      "masked": 55,
+      "success_pct": 87.3,
+      "sample_leaks": [
+        "FIKCYJNE",
+        "BCANPLIA56F",
+        "YEGXPLWOPDF",
+        "JAJWPLJH5NA",
+        "PBHXPLT5VPU",
+        "QDJTPLGY3VG",
+        "QVRJPLD3SOW",
+        "DNBEPLHLUXB"
+      ]
+    },
+    "PAN": {
+      "input_count": 110,
+      "remaining_in_output": 8,
+      "masked": 102,
+      "success_pct": 92.7,
+      "sample_leaks": [
+        "5409148807293791",
+        "357621828476495",
+        "5401 6846 3181 3640",
+        "649241075210341",
+        "5859348430507413",
+        "088200877203250",
+        "4273 1886 9799 6529",
+        "179742331784934"
+      ]
+    },
+    "IP": {
+      "input_count": 66,
+      "remaining_in_output": 8,
+      "masked": 58,
+      "success_pct": 87.9,
+      "sample_leaks": [
+        "162.18.254.25",
+        "212.211.103.86",
+        "190.22.227.58",
+        "51.123.131.7",
+        "77.201.156.139",
+        "10.50.188.203",
+        "14.183.157.135",
+        "233.199.219.64"
+      ]
+    },
+    "MAC": {
+      "input_count": 66,
+      "remaining_in_output": 8,
+      "masked": 58,
+      "success_pct": 87.9,
+      "sample_leaks": [
+        "45:45:2F:98:0B:18",
+        "76:55:7E:F6:2E:E0",
+        "2F:2B:0A:A4:AE:9E",
+        "67:CD:66:CE:55:2A",
+        "7B:2D:AA:2F:9A:59",
+        "3D:91:0D:E8:A7:A1",
+        "34:39:89:80:FD:48",
+        "03:7A:DD:91:8F:69"
+      ]
+    },
+    "IMEI": {
+      "input_count": 46,
+      "remaining_in_output": 8,
+      "masked": 38,
+      "success_pct": 82.6,
+      "sample_leaks": [
+        "357621828476495",
+        "649241075210341",
+        "088200877203250",
+        "179742331784934",
+        "221130688234149",
+        "124137635132936",
+        "195315305919680",
+        "996339694987268"
+      ]
+    },
+    "VIN": {
+      "input_count": 20,
+      "remaining_in_output": 8,
+      "masked": 12,
+      "success_pct": 60.0,
+      "sample_leaks": [
+        "HCGFB5A3Z94CT4LFC",
+        "N3VJCM4ALSVJT38R9",
+        "UHYLMNMUWB9N0ZNV1",
+        "NLLAB9J3M0F5NEFAF",
+        "Y63GM75E3ZS10G0DZ",
+        "AYFA0EX9Z40ES6AEK",
+        "KTYBCXJKYE4P7CAWG",
+        "L6UNZ95W8L54XLCTJ"
+      ]
+    },
+    "GPS": {
+      "input_count": 20,
+      "remaining_in_output": 8,
+      "masked": 12,
+      "success_pct": 60.0,
+      "sample_leaks": [
+        "49.540113, 15.724025",
+        "53.765398, 19.662174",
+        "53.189472, 19.879800",
+        "53.953865, 15.329539",
+        "51.084276, 20.261634",
+        "53.793102, 17.707457",
+        "54.409822, 19.963804",
+        "53.741249, 21.443991"
+      ]
+    },
+    "POSTCODE": {
+      "input_count": 122,
+      "remaining_in_output": 0,
+      "masked": 122,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    },
+    "PERSON_CTX": {
+      "input_count": 0,
+      "remaining_in_output": 0,
+      "masked": 0,
+      "success_pct": null,
+      "sample_leaks": []
+    },
+    "ADDRESS_CTX": {
+      "input_count": 40,
+      "remaining_in_output": 0,
+      "masked": 40,
+      "success_pct": 100.0,
+      "sample_leaks": []
+    }
+  }
+}

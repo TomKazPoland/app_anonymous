@@ -1,7 +1,10 @@
-from __future__ import annotations
-
-import re
 from dataclasses import dataclass
+
+from .detectors_polish_ids import detect_polish_ids
+from .detectors_personal_pl import detect_personal_pl
+from .detectors_financial_technical import detect_financial_technical
+from .detectors_basic import detect_basic
+from .detectors_supplemental import detect_supplemental
 
 
 @dataclass(frozen=True)
@@ -12,44 +15,24 @@ class Entity:
     value: str
 
 
-EMAIL_RE = re.compile(r"\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b")
-PESEL_RE = re.compile(r"\b\d{11}\b")
+def detect(text):
+    # Priority:
+    # 1) Polish IDs
+    # 2) Financial / technical identifiers
+    # 3) Personal/address data
+    # 4) Basic email/pesel/phone
+    raw_entities = (
+        detect_polish_ids(text)
+        + detect_financial_technical(text)
+        + detect_supplemental(text)
+        + detect_personal_pl(text)
+        + detect_basic(text)
+    )
 
-# +48 600 700 800, +48600700800, +1-202-555-0101 etc.
-PHONE_INTL_RE = re.compile(r"\+\d{1,3}(?:[ \-]?\d){6,14}\b")
+    entities = [Entity(start, end, entity_type, value) for start, end, entity_type, value in raw_entities]
 
-# Polish 9-digit patterns: 600700800 / 600 700 800 / 600-700-800
-PHONE_PL9_RE = re.compile(r"\b\d{3}(?:[ \-]?\d{3}){2}\b")
-
-
-def detect(text: str) -> list[Entity]:
-    entities: list[Entity] = []
-
-    # EMAIL first
-    for m in EMAIL_RE.finditer(text):
-        entities.append(Entity(m.start(), m.end(), "EMAIL", m.group(0)))
-
-    # PESEL next
-    for m in PESEL_RE.finditer(text):
-        entities.append(Entity(m.start(), m.end(), "PESEL", m.group(0)))
-
-    # Phones
-    for m in PHONE_INTL_RE.finditer(text):
-        val = m.group(0).strip()
-        digits = re.sub(r"\D", "", val)
-        if len(digits) >= 9:
-            entities.append(Entity(m.start(), m.end(), "PHONE", val))
-
-    for m in PHONE_PL9_RE.finditer(text):
-        val = m.group(0).strip()
-        digits = re.sub(r"\D", "", val)
-        # only 9-digit, avoid PESEL and other patterns
-        if len(digits) == 9:
-            entities.append(Entity(m.start(), m.end(), "PHONE", val))
-
-    # Sort and remove overlaps (prefer earlier added: EMAIL/PESEL before PHONE)
     entities.sort(key=lambda e: (e.start, -(e.end - e.start)))
-    cleaned: list[Entity] = []
+    cleaned = []
     last_end = -1
     for e in entities:
         if e.start >= last_end:
