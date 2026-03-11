@@ -9,3 +9,8 @@ __pycache__/
 .venv/
 venv/
 .env
+
+backups/
+tmp/
+.venv
+sure_full_recovery_audit.sh
