@@ -14,3 +14,5 @@ backups/
 tmp/
 .venv
 sure_full_recovery_audit.sh
+
+.venv310/

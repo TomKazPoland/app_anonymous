@@ -255,4 +255,9 @@ def create_app() -> Flask:
         )
         return render_template("errors/500.html"), 500
 
+
+    @app.route("/_anonymous_version_probe", methods=["GET"])
+    def _anonymous_version_probe():
+        return "ANON_PROBE_20260318_155635", 200
+
     return app
