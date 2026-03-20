@@ -1,19 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ t.html_lang }}">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>File Too Large</title>
+  <title>ANONYMOUS – {{ t.error_413_title }}</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 24px; max-width: 760px; }
-    .box { border: 1px solid #ddd; border-radius: 8px; padding: 16px; }
+    body { font-family: Arial, sans-serif; margin: 24px; max-width: 980px; }
+    .box { border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 16px 0; }
+    .warn { background: #fff6d6; border: 1px solid #f2d27b; padding: 10px; border-radius: 8px; }
+    .langbar { margin-bottom: 18px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .langbar .label { color: #444; font-size: 0.95rem; }
+    .langbar a { text-decoration: none; border: 1px solid #ccc; border-radius: 8px; padding: 6px 10px; color: #222; }
+    .langbar a.active { font-weight: bold; border-color: #777; }
+    .back { display: inline-block; margin-top: 10px; text-decoration: none; border: 1px solid #ccc; border-radius: 8px; padding: 10px 14px; color: #222; }
+    .small { color: #666; font-size: 0.92rem; }
   </style>
 </head>
 <body>
+  <div class="langbar">
+    <span class="label">{{ t.lang_label }}</span>
+    {% for lang in supported_langs %}
+      <a href="?lang={{ lang }}" class="{% if current_lang == lang %}active{% endif %}">{{ lang_labels[lang] }}</a>
+    {% endfor %}
+  </div>
+
+  <h1>ANONYMOUS</h1>
+
   <div class="box">
-    <h1>Uploaded file is too large</h1>
-    <p>Maximum supported file size is {{ limit_mb }} MB.</p>
-    <p><a href="/">Return to home page</a></p>
+    <h2>{{ t.error_413_title }}</h2>
+    <p>{{ t.error_413_desc }}</p>
+    {% if message %}
+      <div class="warn">{{ message }}</div>
+    {% endif %}
+    {% if 413 == 413 %}
+      <p class="small">Limit: {{ limit_mb }} MB</p>
+    {% endif %}
+    <a class="back" href="./?lang={{ current_lang }}">{{ t.error_back }}</a>
   </div>
 </body>
 </html>

@@ -1,46 +1,136 @@
 <!doctype html>
-<html lang="pl">
+<html lang="{{ t.html_lang }}">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>ANONYMOUS – anonimizacja odwracalna (TXT)</title>
+  <title>{{ t.title }}</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 24px; max-width: 980px; }
-    .box { border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 16px 0; }
-    .warn { background: #fff6d6; border: 1px solid #f2d27b; padding: 10px; border-radius: 8px; }
-    button { padding: 10px 16px; cursor: pointer; }
-    input[type=file] { margin: 10px 0; }
-    .small { color: #666; font-size: 0.92rem; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 24px;
+      max-width: 980px;
+      line-height: 1.5;
+    }
+    .langbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .langbar .label {
+      color: #666;
+      font-size: 0.92rem;
+      margin-right: 4px;
+    }
+    .langbar a {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.92rem;
+    }
+    .langbar a.active {
+      font-weight: bold;
+      border-color: #999;
+      background: #f3f3f3;
+    }
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .warn {
+      background: #fff6d6;
+      border: 1px solid #f2d27b;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+    input[type=file] {
+      margin: 10px 0;
+    }
+    .small {
+      color: #666;
+      font-size: 0.92rem;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      color: #666;
+      font-size: 0.92rem;
+    }
+    .footer a {
+      color: inherit;
+    }
   </style>
 </head>
 <body>
-  <h1>ANONYMOUS (MVP)</h1>
-  <p>Strona do <b>odwracalnej anonimizacji</b> danych wrażliwych w plikach TXT. Dane wrażliwe są zamieniane na tokeny w nawiasach <code>{...}</code>.</p>
+  <div class="langbar">
+    <span class="label">{{ t.lang_label }}</span>
+    {% for lang in supported_langs %}
+      <a href="?lang={{ lang }}" class="{% if current_lang == lang %}active{% endif %}">{{ lang_labels[lang] }}</a>
+    {% endfor %}
+  </div>
 
-  <div class="warn">
-    <b>Ważne:</b> podczas zapisywania pliku wynikowego <u>nie zmieniaj proponowanej nazwy pliku</u>.
-    Nazwa oraz nagłówek w pliku służą do powiązania z mapowaniem w bazie.
-    Możesz wybrać dowolny katalog zapisu.
+  <h1>{{ t.h1 }}</h1>
+
+  <div class="box">
+    <h2>{{ t.about_title }}</h2>
+
+    <p>{{ t.about_p1 }}</p>
+
+    <h3>{{ t.how_title }}</h3>
+    <p>
+      {{ t.how_1 }}<br/>
+      {{ t.how_2 }}<br/>
+      {{ t.how_3 }}<br/>
+      {{ t.how_4 }}
+    </p>
+
+    <div class="warn">
+      <b>{{ t.rules_title }}</b><br/>
+      • {{ t.rule_1 }}<br/>
+      • {{ t.rule_2 }}<br/>
+      • {{ t.rule_3 }}<br/><br/>
+
+      <b>{{ t.warning_title }}</b><br/>
+      {{ t.warning_text }}
+    </div>
   </div>
 
   <div class="box">
-    <h2>KODUJ (anonimizuj)</h2>
+    <h2>{{ t.encode_title }}</h2>
     <form action="encode" method="post" enctype="multipart/form-data">
       <input type="file" name="file" accept=".txt,text/plain" required/>
       <br/>
-      <button type="submit">KODUJ</button>
-      <p class="small">Wynik: plik TXT z tokenami + nagłówek <code>## ANON_JOB: ...</code></p>
+      <button type="submit">{{ t.encode_button }}</button>
+      <p class="small">{{ t.encode_result }} <code>## ANON_JOB: ...</code></p>
     </form>
   </div>
 
   <div class="box">
-    <h2>UNDECODE (przywróć dane)</h2>
+    <h2>{{ t.decode_title }}</h2>
     <form action="decode" method="post" enctype="multipart/form-data">
       <input type="file" name="file" accept=".txt,text/plain" required/>
       <br/>
-      <button type="submit">UNDECODE</button>
-      <p class="small">Plik musi zawierać nagłówek <code>## ANON_JOB: ...</code> (dodawany automatycznie przy KODUJ).</p>
+      <button type="submit">{{ t.decode_button }}</button>
+      <p class="small">{{ t.decode_note }} <code>## ANON_JOB: ...</code> {{ t.decode_note_2 }}</p>
     </form>
+  </div>
+
+  <div class="footer">
+    <a href="https://potrzebuje.pl" target="_blank" rel="noopener noreferrer">{{ t.footer_1 }}</a><br/>
+    {{ t.footer_2 }}
   </div>
 </body>
 </html>
