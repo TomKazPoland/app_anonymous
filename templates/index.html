@@ -73,6 +73,41 @@
       color: inherit;
     }
   </style>
+<style id="filepicker-i18n-css">
+.native-file-input {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+.filepicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 10px 0;
+  flex-wrap: wrap;
+}
+.filepicker-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  background: #f5f5f5;
+  color: inherit;
+  cursor: pointer;
+  line-height: 1.2;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.filepicker-name {
+  opacity: 0.85;
+  font-size: 0.95em;
+  min-width: 180px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+</style>
 </head>
 <body>
   <div class="langbar">
@@ -111,7 +146,11 @@
   <div class="box">
     <h2>{{ t.encode_title }}</h2>
     <form action="encode" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" accept=".txt,text/plain" required/>
+      <input id="encode_file" class="native-file-input" type="file" name="file" accept=".txt,text/plain" required/>
+      <div class="filepicker">
+        <label for="encode_file" class="filepicker-btn">{{ t.file_pick }}</label>
+        <span id="encode_file_name" class="filepicker-name">{{ t.file_empty }}</span>
+      </div>
       <br/>
       <button type="submit">{{ t.encode_button }}</button>
       <p class="small">{{ t.encode_result }} <code>## ANON_JOB: ...</code></p>
@@ -121,7 +160,11 @@
   <div class="box">
     <h2>{{ t.decode_title }}</h2>
     <form action="decode" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" accept=".txt,text/plain" required/>
+      <input id="decode_file" class="native-file-input" type="file" name="file" accept=".txt,text/plain" required/>
+      <div class="filepicker">
+        <label for="decode_file" class="filepicker-btn">{{ t.file_pick }}</label>
+        <span id="decode_file_name" class="filepicker-name">{{ t.file_empty }}</span>
+      </div>
       <br/>
       <button type="submit">{{ t.decode_button }}</button>
       <p class="small">{{ t.decode_note }} <code>## ANON_JOB: ...</code> {{ t.decode_note_2 }}</p>
@@ -132,5 +175,23 @@
     <a href="https://potrzebuje.pl" target="_blank" rel="noopener noreferrer">{{ t.footer_1 }}</a><br/>
     {{ t.footer_2 }}
   </div>
+<script id="filepicker-i18n-js">
+document.addEventListener("DOMContentLoaded", function () {
+  function bindFileName(inputId, outputId, emptyText) {
+    var input = document.getElementById(inputId);
+    var out = document.getElementById(outputId);
+    if (!input || !out) return;
+    input.addEventListener("change", function () {
+      if (input.files && input.files.length > 0) {
+        out.textContent = input.files[0].name;
+      } else {
+        out.textContent = emptyText;
+      }
+    });
+  }
+  bindFileName("encode_file", "encode_file_name", {{ t.file_empty|tojson }});
+  bindFileName("decode_file", "decode_file_name", {{ t.file_empty|tojson }});
+});
+</script>
 </body>
 </html>
