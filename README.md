@@ -47,3 +47,12 @@ This means error pages may differ depending on layer.
 - Runbook: RUNBOOK.md
 - Rules: AGENTS.md
 
+
+## Latest fix: decode filename policy
+
+Output filenames were shortened to avoid filesystem length overflow.
+
+- encode: `<first20_or_less>__CODE__<YYYYMMDD>_<HHMMSS>.<ext>`
+- decode: `<first20_or_less>__DECODE__<YYYYMMDD>_<HHMMSS>.txt`
+
+`job_id` remains in the file header and mapping database, not in output filenames.

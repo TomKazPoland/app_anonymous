@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import traceback
 from flask import Flask, render_template, request, send_file, abort, g, make_response
 
 from .utils import now_timestamp_ms, sanitize_filename, project_root
@@ -278,6 +279,13 @@ def create_app() -> Flask:
 
     @app.get("/")
     def index():
+        client_ip = extract_client_ip(request)
+        g.client_ip = client_ip
+        g.route = request.path
+        g.job_id = None
+        g.file_size = None
+        g.entities_found = None
+
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
         response = make_response(
@@ -289,10 +297,420 @@ def create_app() -> Flask:
                 lang_labels=_lang_labels(),
             )
         )
+        log_event(
+            app_logger,
+            route=request.path,
+            client_ip=client_ip,
+            job_id=None,
+            file_size=None,
+            entities_found=None,
+            status_code=200,
+            event_type="visit",
+            method=request.method,
+            lang=lang,
+            mode="index",
+            success_flag=True,
+        )
         manual = request.args.get("lang", "").strip().lower()
         if manual in SUPPORTED_LANGS:
             response.set_cookie("lang", manual, max_age=60 * 60 * 24 * 365, samesite="Lax")
         return response
+
+    @app.get("/statistics")
+    def statistics_route():
+        import json
+        from datetime import datetime, timedelta, timezone
+
+        lang = _resolve_lang()
+        t = I18N.get(lang, I18N[DEFAULT_LANG])
+
+        ranges = [
+            {"value": "today", "label": "Today"},
+            {"value": "daily", "label": "24H"},
+            {"value": "weekly", "label": "7D"},
+            {"value": "monthly", "label": "30D"},
+            {"value": "yearly", "label": "12M"},
+        ]
+
+        stats_range = request.args.get("range", "today").strip().lower()
+        allowed_ranges = {item["value"] for item in ranges}
+        if stats_range not in allowed_ranges:
+            stats_range = "today"
+
+        def _parse_ts(raw):
+            if not raw:
+                return None
+            try:
+                raw = raw.replace("Z", "+00:00")
+                dt = datetime.fromisoformat(raw)
+            except Exception:
+                return None
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+
+        def _month_start(dt):
+            return dt.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+        def _add_months(dt, months):
+            year = dt.year + ((dt.month - 1 + months) // 12)
+            month = ((dt.month - 1 + months) % 12) + 1
+            return dt.replace(year=year, month=month, day=1)
+
+        def _read_events(log_path):
+            events = []
+            if not log_path.exists():
+                return events
+            with log_path.open("r", encoding="utf-8", errors="replace") as fh:
+                for raw_line in fh:
+                    line = raw_line.strip()
+                    if not line or not line.startswith("{"):
+                        continue
+                    try:
+                        item = json.loads(line)
+                    except Exception:
+                        continue
+                    dt = _parse_ts(item.get("timestamp"))
+                    if not dt:
+                        continue
+                    item["_dt"] = dt
+                    events.append(item)
+            return events
+
+        def _in_current_window(dt, now_utc, range_name):
+            if range_name == "today":
+                return dt.date() == now_utc.date()
+            if range_name == "daily":
+                return dt.date() >= (now_utc.date() - timedelta(days=29))
+            if range_name == "weekly":
+                start = (now_utc - timedelta(days=83)).date()
+                return dt.date() >= start
+            if range_name == "monthly":
+                start = _add_months(_month_start(now_utc), -11)
+                return dt >= start
+            return True
+
+        def _in_previous_window(dt, now_utc, range_name):
+            if range_name == "today":
+                prev_day = now_utc.date() - timedelta(days=1)
+                return dt.date() == prev_day
+            if range_name == "daily":
+                start = now_utc.date() - timedelta(days=59)
+                end = now_utc.date() - timedelta(days=30)
+                return start <= dt.date() <= end
+            if range_name == "weekly":
+                start = now_utc.date() - timedelta(days=167)
+                end = now_utc.date() - timedelta(days=84)
+                return start <= dt.date() <= end
+            if range_name == "monthly":
+                start = _add_months(_month_start(now_utc), -23)
+                end = _add_months(_month_start(now_utc), -11)
+                return start <= dt < end
+            return dt.year == (now_utc.year - 1)
+
+        def _period_key(dt, range_name):
+            if range_name in ("today", "daily"):
+                return dt.strftime("%Y-%m-%d")
+            if range_name == "weekly":
+                iso = dt.isocalendar()
+                year = iso[0]
+                week = iso[1]
+                return f"{year}-W{week:02d}"
+            if range_name == "monthly":
+                return dt.strftime("%Y-%m")
+            return dt.strftime("%Y")
+
+        def _trend_key(dt, range_name):
+            if range_name in ("today", "daily"):
+                return dt.strftime("%Y-%m-%d %H:00")
+            if range_name == "weekly":
+                return dt.strftime("%Y-%m-%d")
+            if range_name == "monthly":
+                return dt.strftime("%Y-%m-%d")
+            return dt.strftime("%Y-%m")
+
+        def _metric_counts(events_subset):
+            visits = 0
+            tool_uses = 0
+            encode = 0
+            decode = 0
+            errors = 0
+            successes = 0
+
+            for item in events_subset:
+                event_type = item.get("event_type")
+                mode = item.get("mode")
+                success_flag = item.get("success_flag")
+
+                if event_type == "visit":
+                    visits += 1
+                if event_type == "tool_use":
+                    tool_uses += 1
+                if mode == "encode" and event_type == "tool_use":
+                    encode += 1
+                if mode == "decode" and event_type == "tool_use":
+                    decode += 1
+                if event_type == "error":
+                    errors += 1
+                if success_flag is True:
+                    successes += 1
+
+            attempts = tool_uses + errors
+            success_rate = 0.0 if attempts == 0 else (100.0 * tool_uses / attempts)
+
+            return {
+                "visits": visits,
+                "tool_uses": tool_uses,
+                "encode": encode,
+                "decode": decode,
+                "errors": errors,
+                "success_rate": success_rate,
+            }
+
+        def _delta_str(cur, prev, is_percent=False):
+            if is_percent:
+                diff = cur - prev
+                return f"{diff:+.1f} pp"
+            diff = cur - prev
+            return f"{diff:+d}"
+
+        app_log_path = logs_dir / "app.log"
+        all_events = _read_events(app_log_path)
+        now_utc = datetime.now(timezone.utc)
+
+        excluded_routes = {"/statistics", "/_anonymous_version_probe"}
+        filtered_events = [e for e in all_events if (e.get("route") or "") not in excluded_routes]
+
+        display_events = [e for e in filtered_events if _in_current_window(e["_dt"], now_utc, stats_range)]
+        prev_events = [e for e in filtered_events if _in_previous_window(e["_dt"], now_utc, stats_range)]
+
+        cur_metrics = _metric_counts(display_events)
+        # === BOT / HUMAN COUNTS (SAFE SIDE COMPUTATION) ===
+        def _is_bot_user_agent(ua: str) -> bool:
+            if not ua:
+                return False
+            ua = ua.lower()
+            bot_markers = ["bot", "crawler", "spider", "curl", "python", "wget"]
+            return any(m in ua for m in bot_markers)
+
+        bot_count = 0
+        human_count = 0
+
+        for e in display_events:
+            ua = e.get("user_agent", "") or ""
+            if _is_bot_user_agent(ua):
+                bot_count += 1
+            else:
+                human_count += 1
+
+        prev_metrics = _metric_counts(prev_events)
+
+        grouped = {}
+        for item in display_events:
+            key = (
+                _period_key(item["_dt"], stats_range),
+                item.get("route") or "",
+                item.get("event_type") or "",
+                item.get("mode") or "",
+                item.get("lang") or "",
+                item.get("status_code"),
+            )
+            if key not in grouped:
+                grouped[key] = {
+                    "period": key[0],
+                    "route": key[1],
+                    "event_type": key[2],
+                    "mode": key[3],
+                    "lang": key[4],
+                    "status_code": key[5],
+                    "count": 0,
+                    "success_count": 0,
+                    "error_count": 0,
+                }
+            grouped[key]["count"] += 1
+            if item.get("success_flag") is True:
+                grouped[key]["success_count"] += 1
+            if item.get("success_flag") is False:
+                grouped[key]["error_count"] += 1
+
+        rows = sorted(
+            grouped.values(),
+            key=lambda r: (
+                r["period"],
+                r["count"],
+                r["route"],
+                r["event_type"],
+                r["mode"],
+                r["lang"],
+                str(r["status_code"]),
+            ),
+            reverse=True,
+        )
+
+        
+        visit_events = [e for e in display_events if e.get("event_type") == "visit"]
+
+        from datetime import timedelta
+
+        trend_map = {}
+
+        def add_point(key):
+            trend_map[key] = trend_map.get(key, 0) + 1
+
+        if stats_range in ("today", "daily"):
+            # hourly
+            for h in range(24):
+                key = f"{h:02d}:00"
+                trend_map[key] = 0
+
+            for e in visit_events:
+                dt = e["_dt"]
+                key = f"{dt.hour:02d}:00"
+                add_point(key)
+
+        elif stats_range == "weekly":
+            for d in range(7):
+                key = (now_utc - timedelta(days=6 - d)).strftime("%Y-%m-%d")
+                trend_map[key] = 0
+
+            for e in visit_events:
+                key = e["_dt"].strftime("%Y-%m-%d")
+                if key in trend_map:
+                    add_point(key)
+
+        elif stats_range == "monthly":
+            for d in range(30):
+                key = (now_utc - timedelta(days=29 - d)).strftime("%Y-%m-%d")
+                trend_map[key] = 0
+
+            for e in visit_events:
+                key = e["_dt"].strftime("%Y-%m-%d")
+                if key in trend_map:
+                    add_point(key)
+
+        elif stats_range == "yearly":
+            for m in range(12):
+                key = (now_utc - timedelta(days=330 - m*30)).strftime("%Y-%m")
+                trend_map[key] = 0
+
+            for e in visit_events:
+                key = e["_dt"].strftime("%Y-%m")
+                if key in trend_map:
+                    add_point(key)
+
+        trend_labels = sorted(trend_map.keys())
+        trend_values = [trend_map[k] for k in trend_labels]
+
+        # --- PIE CHART AGGREGATIONS ---
+        route_counts_map = {}
+        event_type_counts_map = {}
+        status_counts_map = {}
+
+        for e in display_events:
+            route = e.get("route") or "unknown"
+            et = e.get("event_type") or "unknown"
+            status = str(e.get("status_code"))
+
+            route_counts_map[route] = route_counts_map.get(route, 0) + 1
+            event_type_counts_map[et] = event_type_counts_map.get(et, 0) + 1
+            status_counts_map[status] = status_counts_map.get(status, 0) + 1
+
+        route_counts = sorted(route_counts_map.items(), key=lambda x: x[1], reverse=True)
+        event_type_counts = sorted(event_type_counts_map.items(), key=lambda x: x[1], reverse=True)
+        status_counts = sorted(status_counts_map.items(), key=lambda x: x[1], reverse=True)
+
+
+
+
+        total_events = len(display_events)
+        unknown_event_count = sum(
+            1 for e in display_events
+            if (e.get("event_type") or "unknown") == "unknown"
+        )
+
+        error_route_counts = {}
+        for e in display_events:
+            if e.get("event_type") == "error":
+                r = e.get("route") or "unknown"
+                error_route_counts[r] = error_route_counts.get(r, 0) + 1
+
+        top_route = route_counts[0][0] if route_counts else "n/a"
+        top_error_route = (
+            sorted(error_route_counts.items(), key=lambda x: x[1], reverse=True)[0][0]
+            if error_route_counts else "n/a"
+        )
+        error_share = 0.0 if total_events == 0 else (100.0 * cur_metrics["errors"] / total_events)
+
+        insights = [
+            {"label": "Top route", "value": top_route},
+            {"label": "Top error route", "value": top_error_route},
+            {"label": "Error share", "value": f"{error_share:.1f}%"},
+            {"label": "Success rate", "value": f"{cur_metrics['success_rate']:.1f}%"},
+            {"label": "Legacy / unknown events", "value": str(unknown_event_count)},
+        ]
+
+        kpis = [
+            {
+                "label": "Visits",
+                "value": cur_metrics["visits"],
+                "delta": _delta_str(cur_metrics["visits"], prev_metrics["visits"]),
+            },
+            {
+                "label": "Tool uses",
+                "value": cur_metrics["tool_uses"],
+                "delta": _delta_str(cur_metrics["tool_uses"], prev_metrics["tool_uses"]),
+            },
+            {
+                "label": "Encode",
+                "value": cur_metrics["encode"],
+                "delta": _delta_str(cur_metrics["encode"], prev_metrics["encode"]),
+            },
+            {
+                "label": "Decode",
+                "value": cur_metrics["decode"],
+                "delta": _delta_str(cur_metrics["decode"], prev_metrics["decode"]),
+            },
+            {
+                "label": "Errors",
+                "value": cur_metrics["errors"],
+                "delta": _delta_str(cur_metrics["errors"], prev_metrics["errors"]),
+            },
+            {
+                "label": "User errors",
+                "value": cur_metrics.get("user_errors", 0),
+                "delta": _delta_str(cur_metrics.get("user_errors", 0), prev_metrics.get("user_errors", 0)),
+            },
+            {
+                "label": "System errors",
+                "value": cur_metrics.get("system_errors", 0),
+                "delta": _delta_str(cur_metrics.get("system_errors", 0), prev_metrics.get("system_errors", 0)),
+            },
+            {
+                "label": "Success rate",
+                "value": f"{cur_metrics['success_rate']:.1f}%",
+                "delta": _delta_str(cur_metrics["success_rate"], prev_metrics["success_rate"], is_percent=True),
+            },
+        ]
+
+        return render_template(
+            "statistics.html",
+            t=t,
+            current_lang=lang,
+            supported_langs=SUPPORTED_LANGS,
+            lang_labels=_lang_labels(),
+            stats_range=stats_range,
+            ranges=ranges,
+            kpis=kpis,
+            insights=insights,
+            rows=rows,
+            trend_labels=trend_labels,
+            trend_values=trend_values,
+            bot_count=bot_count,
+            human_count=human_count,
+            route_counts=route_counts,
+            event_type_counts=event_type_counts,
+            status_counts=status_counts,
+        )
 
     @app.post("/encode")
     def encode_route():
@@ -350,7 +768,9 @@ def create_app() -> Flask:
                 insert_mapping(conn, job_id, m.token, m.entity_type, m.original_value)
             conn.commit()
 
-            out_name = f"{Path(original_safe).stem}__ANON__{job_id}{Path(original_safe).suffix or '.txt'}"
+            encode_stem = (Path(original_safe).stem[:20] or "file")
+            encode_stamp = "_".join(ts.split("-")[:2])
+            out_name = f"{encode_stem}__CODE__{encode_stamp}{Path(original_safe).suffix or '.txt'}"
             out_path = job_dir / "output" / out_name
             out_path.write_text(anon_text_with_header, encoding="utf-8")
 
@@ -362,6 +782,11 @@ def create_app() -> Flask:
             file_size=g.file_size,
             entities_found=g.entities_found,
             status_code=200,
+            event_type="tool_use",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="encode",
+            success_flag=True,
         )
         return send_file(
             out_path,
@@ -389,38 +814,52 @@ def create_app() -> Flask:
         if validation_error:
             abort(400, validation_error)
 
-        uploaded_name = f.filename
-        raw = f.read()
-        g.file_size = len(raw)
-        if len(raw) > MAX_UPLOAD_BYTES:
-            abort(413)
+
         try:
-            text = raw.decode("utf-8")
-        except UnicodeDecodeError:
-            abort(400, "File must be valid UTF-8 TXT.")
+            uploaded_name = f.filename
 
-        job_id = extract_job_id_from_text(text) or extract_job_id_from_filename(uploaded_name)
-        if not job_id:
-            abort(400, "Cannot find job_id. File must include '## ANON_JOB: ...' header or correct filename.")
-        g.job_id = job_id
+            raw = f.read()
+            g.file_size = len(raw)
 
-        with connect(db_path) as conn:
-            mapping = load_mapping_dict(conn, job_id)
+            if len(raw) > MAX_UPLOAD_BYTES:
+                abort(413)
 
-        if not mapping:
-            abort(404, f"No mapping found for job_id: {job_id}")
+            try:
+                text = raw.decode("utf-8")
+            except UnicodeDecodeError:
+                abort(400, "File must be valid UTF-8 TXT.")
 
-        restored = deanonymize(text, mapping)
+            job_id = extract_job_id_from_text(text) or extract_job_id_from_filename(uploaded_name)
 
-        ts2 = now_timestamp_ms()
-        job_dir = storage_dir / job_id
-        (job_dir / "output").mkdir(parents=True, exist_ok=True)
+            if not job_id:
+                abort(400, "Cannot find job_id. File must include '## ANON_JOB: ...' header or correct filename.")
+            g.job_id = job_id
 
-        safe_uploaded = sanitize_filename(uploaded_name)
-        base_stem = Path(safe_uploaded).stem
-        out_name = f"{base_stem}__DEANON__{job_id}__{ts2}.txt"
-        out_path = job_dir / "output" / out_name
-        out_path.write_text(restored, encoding="utf-8")
+            with connect(db_path) as conn:
+                mapping = load_mapping_dict(conn, job_id)
+
+            mapping_size = len(mapping) if mapping else 0
+
+            if not mapping:
+                abort(404, f"No mapping found for job_id: {job_id}")
+
+            restored = deanonymize(text, mapping)
+
+            ts2 = now_timestamp_ms()
+            job_dir = storage_dir / job_id
+            (job_dir / "output").mkdir(parents=True, exist_ok=True)
+
+            safe_uploaded = sanitize_filename(uploaded_name)
+            uploaded_stem = Path(safe_uploaded).stem
+            user_stem = uploaded_stem.split("__",1)[0]
+            base_stem = (user_stem[:20] or "file")
+            decode_stamp = "_".join(ts2.split("-")[:2])
+            out_name = f"{base_stem}__DECODE__{decode_stamp}.txt"
+            out_path = job_dir / "output" / out_name
+            out_path.write_text(restored, encoding="utf-8")
+
+        except Exception as e:
+            raise
 
         log_event(
             app_logger,
@@ -430,6 +869,11 @@ def create_app() -> Flask:
             file_size=g.file_size,
             entities_found=None,
             status_code=200,
+            event_type="tool_use",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="decode",
+            success_flag=True,
         )
         return send_file(
             out_path,
@@ -448,6 +892,11 @@ def create_app() -> Flask:
             file_size=getattr(g, "file_size", request.content_length),
             entities_found=getattr(g, "entities_found", None),
             status_code=400,
+            event_type="error",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
+            success_flag=False,
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -471,6 +920,11 @@ def create_app() -> Flask:
             file_size=getattr(g, "file_size", request.content_length),
             entities_found=getattr(g, "entities_found", None),
             status_code=404,
+            event_type="error",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
+            success_flag=False,
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -494,6 +948,11 @@ def create_app() -> Flask:
             file_size=getattr(g, "file_size", request.content_length),
             entities_found=getattr(g, "entities_found", None),
             status_code=413,
+            event_type="error",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
+            success_flag=False,
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -517,6 +976,11 @@ def create_app() -> Flask:
             file_size=getattr(g, "file_size", request.content_length),
             entities_found=getattr(g, "entities_found", None),
             status_code=429,
+            event_type="error",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
+            success_flag=False,
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -540,6 +1004,11 @@ def create_app() -> Flask:
             file_size=getattr(g, "file_size", request.content_length),
             entities_found=getattr(g, "entities_found", None),
             status_code=500,
+            event_type="error",
+            method=request.method,
+            lang=_resolve_lang(),
+            mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
+            success_flag=False,
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])

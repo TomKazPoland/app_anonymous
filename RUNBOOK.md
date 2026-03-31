@@ -70,3 +70,24 @@ Apache may override errors outside app
 - always archive before change
 - keep docs in repo (never only in chat)
 
+
+## Save point 2026-03-31: decode filename-length fix
+
+### Problem
+Decode could return HTTP 500 for long self-generated filenames.
+
+### Root cause
+Filesystem filename length overflow during output write.
+
+### Fix
+- encode: `<first20_or_less>__CODE__<YYYYMMDD>_<HHMMSS>.<ext>`
+- decode: `<first20_or_less>__DECODE__<YYYYMMDD>_<HHMMSS>.txt`
+- no `job_id` in output filenames
+
+### Cleanup
+Temporary decode trap removed from `app/main.py`.
+
+### Verification
+- CODE OK
+- DECODE OK
+- CONTENT OK
