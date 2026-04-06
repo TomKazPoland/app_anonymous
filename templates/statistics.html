@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="{{ t.html_lang if t and t.html_lang else current_lang }}">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ANONYMOUS – Statistics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 24px;
+      max-width: 1400px;
+      line-height: 1.5;
+    }
+    .langbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .langbar .label {
+      color: #666;
+      font-size: 0.92rem;
+      margin-right: 4px;
+    }
+    .langbar a {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.92rem;
+    }
+    .langbar a.active {
+      font-weight: bold;
+      border-color: #999;
+      background: #f3f3f3;
+    }
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .section-title {
+      margin: 0 0 12px 0;
+    }
+    .small {
+      color: #666;
+      font-size: 0.92rem;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .kpi {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fafafa;
+    }
+    .kpi-label {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .kpi-value {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .kpi-delta {
+      margin-top: 4px;
+      font-size: 0.92rem;
+      color: #444;
+    }
+    .ranges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .ranges a {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.92rem;
+    }
+    .ranges a.active {
+      font-weight: bold;
+      border-color: #999;
+      background: #f3f3f3;
+    }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .chart-wide {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 14px;
+      background: #fafafa;
+      margin-top: 12px;
+    }
+    .chart-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 14px;
+      background: #fafafa;
+      min-height: 220px;
+    }
+    .chart-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .chart-note {
+      color: #666;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+    }
+    .chart-placeholder {
+      height: 180px;
+      border: 1px dashed #bbb;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #666;
+      background: #fff;
+      padding: 12px;
+    }
+    .trend-host {
+      width: 100%;
+      min-height: 240px;
+      border: 1px dashed #bbb;
+      border-radius: 10px;
+      background: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .trend-meta {
+      margin-top: 8px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .chart-disabled {
+      opacity: 0.65;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+    th {
+      background: #f5f5f5;
+      white-space: nowrap;
+    }
+    th.sortable {
+      cursor: pointer;
+      user-select: none;
+    }
+    .filter-row th {
+      background: #fafafa;
+      padding: 6px 8px;
+    }
+    .col-filter {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    .muted {
+      color: #777;
+    }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .insight {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fafafa;
+    }
+    .insight-label {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .insight-value {
+      font-size: 1.1rem;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      color: #666;
+      font-size: 0.92rem;
+    }
+    .footer a {
+      color: inherit;
+    }
+  
+.chart-filter { margin:6px 0; }
+.chart-filter-toggle {
+  font-size:12px; padding:4px 8px;
+  border:1px solid #ccc; background:#f5f5f5;
+  border-radius:6px; cursor:pointer;
+}
+.chart-filter-panel {
+  display:none;
+  border:1px solid #ddd;
+  padding:8px;
+  margin-top:6px;
+  background:#fff;
+}
+</style>
+
+</head>
+<body>
+  <div class="langbar">
+    <span class="label">{{ t.lang_label if t else "Language:" }}</span>
+    {% for lang in supported_langs %}
+      <a href="?lang={{ lang }}&range={{ stats_range }}" class="{% if current_lang == lang %}active{% endif %}">{{ lang_labels[lang] }}</a>
+    {% endfor %}
+  </div>
+
+  <h1>ANONYMOUS – Statistics</h1>
+
+  <div class="box">
+    <h2 class="section-title">Overview</h2>
+    <p class="small">Operational dashboard for application traffic and tool usage.</p>
+    <div class="ranges">
+      {% for item in ranges %}
+        <a href="?lang={{ current_lang }}&range={{ item.value }}" class="{% if stats_range == item.value %}active{% endif %}">{{ item.label }}</a>
+      {% endfor %}
+    </div>
+    <div class="kpis">
+
+      {% for kpi in kpis %}
+        <div class="kpi">
+          <div class="kpi-label">{{ kpi.label }}</div>
+          <div class="kpi-value">{{ kpi.value }}</div>
+          <div class="kpi-delta">Δ {{ kpi.delta }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="insights-grid">
+      {% for insight in insights %}
+        <div class="insight">
+          <div class="insight-label">{{ insight.label }}</div>
+          <div class="insight-value">{{ insight.value }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="section-title">Charts</h2>
+  
+    
+
+    <p class="small">Visual summaries for the selected range. The visits trend should adapt to today / daily / weekly / monthly / yearly while keeping full box width.</p>
+
+    <div class="chart-wide">
+      <div class="chart-title">Visits trend</div>
+      <div class="chart-note">Full-width trend chart. Range and granularity depend on the selected period.</div>
+      <div id="visits-trend-chart" class="trend-host"></div>
+      <div id="visits-trend-meta" class="trend-meta"></div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Route distribution</div>
+      <div class="chart-filter">
+        <button class="chart-filter-toggle" data-target="route-filter-panel">Filter</button>
+        <div id="route-filter-panel" class="chart-filter-panel"></div>
+      </div>
+
+        <div class="chart-note">Pie chart placeholder.</div>
+        <div id="route-pie-chart" class="chart-placeholder">Route pie chart placeholder</div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Event type distribution</div>
+      <div class="chart-filter">
+        <button class="chart-filter-toggle" data-target="event-type-filter-panel">Filter</button>
+        <div id="event-type-filter-panel" class="chart-filter-panel"></div>
+      </div>
+
+        <div class="chart-note">Pie chart placeholder.</div>
+        <div id="event-type-pie-chart" class="chart-placeholder">Event type pie chart placeholder</div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Status distribution</div>
+      <div class="chart-filter">
+        <button class="chart-filter-toggle" data-target="status-filter-panel">Filter</button>
+        <div id="status-filter-panel" class="chart-filter-panel"></div>
+      </div>
+
+        <div class="chart-note">Pie chart placeholder.</div>
+        <div id="status-pie-chart" class="chart-placeholder">Status pie chart placeholder</div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Country distribution</div>
+        <div class="chart-note">Not active yet — GeoIP/country data source not implemented.</div>
+        <div id="country-pie-chart" class="chart-placeholder">Country pie chart placeholder</div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">Browser distribution</div>
+        <div class="chart-note">Not active yet — browser/user-agent parsing not implemented.</div>
+        <div id="browser-pie-chart" class="chart-placeholder">Browser pie chart placeholder</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="section-title">Data table</h2>
+    <p class="small">Single analytical table for the selected range.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="sortable" data-sort-col="0">Period</th>
+            <th class="sortable" data-sort-col="1">Route</th>
+            <th class="sortable" data-sort-col="2">Event type</th>
+            <th class="sortable" data-sort-col="3">Mode</th>
+            <th class="sortable" data-sort-col="4">Lang</th>
+            <th class="sortable" data-sort-col="5">Status</th>
+            <th class="sortable" data-sort-col="6">Count</th>
+            <th class="sortable" data-sort-col="7">Success</th>
+            <th class="sortable" data-sort-col="8">Error</th>
+          </tr>
+          <tr class="filter-row">
+            <th><input class="col-filter" type="text" data-col="0" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="1" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="2" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="3" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="4" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="5" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="6" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="7" placeholder="Filter"/></th>
+            <th><input class="col-filter" type="text" data-col="8" placeholder="Filter"/></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if rows %}
+            {% for row in rows %}
+              <tr>
+                <td>{{ row.period }}</td>
+                <td>{{ row.route }}</td>
+                <td>{{ row.event_type }}</td>
+                <td>{{ row.mode }}</td>
+                <td>{{ row.lang }}</td>
+                <td>{{ row.status_code }}</td>
+                <td>{{ row.count }}</td>
+                <td>{{ row.success_count }}</td>
+                <td>{{ row.error_count }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="9" class="muted">No statistics data available for this range.</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://potrzebuje.pl" target="_blank" rel="noopener noreferrer">{{ t.footer_1 if t else "© potrzebuje.pl — All rights reserved." }}</a><br/>
+    {{ t.footer_2 if t else "Vibe Coding using ChatGPT" }}
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // === BUILD CHECKBOXES ===
+      function buildFilterCheckboxes(containerId, data) {
+        var el = document.getElementById(containerId);
+        if (!el || !data || !data.length) return;
+
+        el.innerHTML = data.map(function(item){
+          return '<label style="display:block;">'
+            + '<input type="checkbox" checked value="' + item[0] + '"/> '
+            + item[0] + ' (' + item[1] + ')'
+            + '</label>';
+        }).join('');
+      }
+
+      function getCheckedValues(containerId) {
+        var el = document.getElementById(containerId);
+        if (!el) return [];
+        return Array.prototype.slice.call(el.querySelectorAll('input[type="checkbox"]:checked'))
+          .map(function(cb){ return cb.value; });
+      }
+
+      function filterDataBySelection(data, allowedValues) {
+        if (!data || !data.length) return [];
+        if (!allowedValues || !allowedValues.length) return [];
+        return data.filter(function(item){
+          return allowedValues.indexOf(String(item[0])) !== -1;
+        });
+      }
+
+      function refreshPieChartsFromCheckboxes() {
+        var routeAllowed = getCheckedValues("route-filter-panel");
+        var eventTypeAllowed = getCheckedValues("event-type-filter-panel");
+        var statusAllowed = getCheckedValues("status-filter-panel");
+
+        renderPieChart("route-pie-chart", filterDataBySelection(routeCounts, routeAllowed));
+        renderPieChart("event-type-pie-chart", filterDataBySelection(eventTypeCounts, eventTypeAllowed));
+        renderPieChart("status-pie-chart", filterDataBySelection(statusCounts, statusAllowed));
+      }
+
+      function bindCheckboxRefresh(containerId) {
+        var el = document.getElementById(containerId);
+        if (!el) return;
+        Array.prototype.slice.call(el.querySelectorAll('input[type="checkbox"]')).forEach(function(cb){
+          cb.addEventListener("change", function(){
+            refreshPieChartsFromCheckboxes();
+          });
+        });
+      }
+
+      // === FILTER TOGGLE ONLY ===
+      document.querySelectorAll(".chart-filter-toggle").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          var id = btn.getAttribute("data-target");
+          var el = document.getElementById(id);
+          if (!el) return;
+
+          if (el.style.display === "block") {
+            el.style.display = "none";
+          } else {
+            el.style.display = "block";
+          }
+        });
+      });
+
+      var trendLabels = {{ trend_labels|tojson }};
+      
+
+      
+
+      var trendValues = {{ trend_values|tojson }};
+
+      var routeCounts = {{ route_counts|tojson }};
+      var eventTypeCounts = {{ event_type_counts|tojson }};
+      var statusCounts = {{ status_counts|tojson }};
+
+      
+function getSemanticColor(containerId, label, index) {
+  label = String(label || "").toLowerCase();
+
+  // STATUS CHART
+  if (containerId.includes("status")) {
+    if (label.startsWith("2")) return "#22c55e"; // green
+    if (label.startsWith("4") || label.startsWith("5")) return "#ef4444"; // red
+    return "#9ca3af"; // gray
+  }
+
+  // EVENT TYPE
+  if (containerId.includes("event-type")) {
+    if (label === "visit") return "#3b82f6"; // blue
+    if (label === "tool_use") return "#60a5fa"; // light blue
+    if (label === "error") return "#ef4444"; // red
+  }
+
+  // ROUTE (fallback palette)
+  const palette = ["#3b82f6", "#60a5fa", "#93c5fd", "#c7d2fe"];
+  return palette[index % palette.length];
+}
+
+function renderPieChart(containerId, data) {
+        var host = document.getElementById(containerId);
+        if (!host || !data || !data.length) return;
+
+        var total = data.reduce(function(a,b){ return a + b[1]; }, 0);
+        if (total === 0) {
+          host.innerHTML = '<div class="chart-placeholder">No data</div>';
+          return;
+        }
+
+        var cx = 100;
+        var cy = 100;
+        var r = 80;
+
+        var angleStart = 0;
+
+        function polarToCartesian(cx, cy, r, angle) {
+          return {
+            x: cx + r * Math.cos(angle),
+            y: cy + r * Math.sin(angle)
+          };
+        }
+
+        var paths = '';
+        var legend = '';
+
+        if (data.length === 1) {
+          var singleLabel = data[0][0];
+          var singleValue = data[0][1];
+          var singleColor = getSemanticColor(containerId, singleLabel, 0);
+
+          paths = '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + singleColor + '"></circle>';
+
+          legend = '<div style="font-size:12px;margin-top:4px;">'
+            + '<span style="display:inline-block;width:10px;height:10px;background:'+singleColor+';margin-right:6px;"></span>'
+            + singleLabel + ' (' + singleValue + ')'
+            + '</div>';
+        } else {
+          data.forEach(function(item, i) {
+            var label = item[0];
+            var value = item[1];
+            var angle = (value / total) * Math.PI * 2;
+
+            var start = polarToCartesian(cx, cy, r, angleStart);
+            var end = polarToCartesian(cx, cy, r, angleStart + angle);
+
+            var largeArc = angle > Math.PI ? 1 : 0;
+
+            var color = getSemanticColor(containerId, label, i);
+
+            var d = [
+              "M", cx, cy,
+              "L", start.x, start.y,
+              "A", r, r, 0, largeArc, 1, end.x, end.y,
+              "Z"
+            ].join(" ");
+
+            paths += '<path d="'+d+'" fill="'+color+'"></path>';
+
+            legend += '<div style="font-size:12px;margin-top:4px;">'
+              + '<span style="display:inline-block;width:10px;height:10px;background:'+color+';margin-right:6px;"></span>'
+              + label + ' (' + value + ')'
+              + '</div>';
+
+            angleStart += angle;
+          });
+        }
+
+        var svg = '<svg viewBox="0 0 200 200" width="100%" height="200">'
+          + paths
+          + '</svg>';
+
+        host.innerHTML = svg + '<div style="margin-top:8px;">' + legend + '</div>';
+      }
+
+      var trendHost = document.getElementById("visits-trend-chart");
+      var trendMeta = document.getElementById("visits-trend-meta");
+
+      function escapeXml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&apos;");
+      }
+
+      function renderTrendChart(labels, values) {
+        if (!trendHost) return;
+
+        if (!labels || !values || !labels.length || !values.length) {
+          trendHost.innerHTML = '<div class="chart-placeholder">No visits trend data available for this range.</div>';
+          if (trendMeta) trendMeta.textContent = '';
+          return;
+        }
+
+        var width = Math.max(trendHost.clientWidth - 20, 640);
+        var height = 220;
+        var left = 46;
+        var right = 18;
+        var top = 18;
+        var bottom = 40;
+        var plotWidth = width - left - right;
+        var plotHeight = height - top - bottom;
+        var maxValue = Math.max.apply(null, values);
+        var safeMax = maxValue > 0 ? maxValue : 1;
+
+        function xAt(i) {
+          if (values.length === 1) return left + plotWidth / 2;
+          return left + (i * plotWidth / (values.length - 1));
+        }
+
+        function yAt(v) {
+          return top + plotHeight - (v / safeMax) * plotHeight;
+        }
+
+        var points = values.map(function (v, i) {
+          return xAt(i) + ',' + yAt(v);
+        }).join(' ');
+
+        var grid = '';
+        for (var g = 0; g <= 4; g++) {
+          var gv = safeMax * g / 4;
+          var gy = yAt(gv);
+          grid += '<line x1="' + left + '" y1="' + gy + '" x2="' + (left + plotWidth) + '" y2="' + gy + '" stroke="#eee"/>';
+          grid += '<text x="' + (left - 8) + '" y="' + (gy + 4) + '" font-size="11" text-anchor="end" fill="#666">' + Math.round(gv) + '</text>';
+        }
+
+        var labelsSvg = '';
+        labels.forEach(function (label, i) {
+          var x = xAt(i);
+          labelsSvg += '<text x="' + x + '" y="' + (top + plotHeight + 18) + '" font-size="10" text-anchor="middle" fill="#666">' + escapeXml(label) + '</text>';
+        });
+
+        var pointsSvg = values.map(function (v, i) {
+          var cx = xAt(i);
+          var cy = yAt(v);
+          return '<circle cx="' + cx + '" cy="' + cy + '" r="3" fill="#333"><title>' + escapeXml(labels[i] + ': ' + v) + '</title></circle>';
+        }).join('');
+
+        var svg = ''
+          + '<svg viewBox="0 0 ' + width + ' ' + height + '" width="100%" height="' + height + '" role="img" aria-label="Visits trend chart">'
+          + grid
+          + '<line x1="' + left + '" y1="' + (top + plotHeight) + '" x2="' + (left + plotWidth) + '" y2="' + (top + plotHeight) + '" stroke="#bbb"/>'
+          + '<line x1="' + left + '" y1="' + top + '" x2="' + left + '" y2="' + (top + plotHeight) + '" stroke="#bbb"/>'
+          + values.map(function(v,i){
+            var x = xAt(i) - 5;
+            var y = yAt(v);
+            var h = (top + plotHeight) - y;
+            return '<rect x="'+x+'" y="'+y+'" width="10" height="'+h+'" fill="#333"></rect>';
+        }).join('')
+          + pointsSvg
+          + labelsSvg
+          + '</svg>';
+
+        trendHost.innerHTML = svg;
+        if (trendMeta) {
+          trendMeta.textContent = 'Points: ' + values.length + ' | Total visits in range: ' + values.reduce(function (a, b) { return a + b; }, 0);
+        }
+      }
+
+      renderTrendChart(trendLabels, trendValues);
+      
+
+      
+
+      renderPieChart("route-pie-chart", routeCounts);
+      renderPieChart("event-type-pie-chart", eventTypeCounts);
+      renderPieChart("status-pie-chart", statusCounts);
+      var countryCounts = Object.entries({{ (country_data or {})|tojson }}).sort(function(a, b) { return b[1] - a[1]; });
+      var browserCounts = Object.entries({{ (browser_data or {})|tojson }}).sort(function(a, b) { return b[1] - a[1]; });
+
+      renderPieChart("country-pie-chart", countryCounts);
+      renderPieChart("browser-pie-chart", browserCounts);
+
+      // === INIT FILTER UI ===
+      buildFilterCheckboxes("route-filter-panel", routeCounts);
+      buildFilterCheckboxes("event-type-filter-panel", eventTypeCounts);
+      buildFilterCheckboxes("status-filter-panel", statusCounts);
+
+      bindCheckboxRefresh("route-filter-panel");
+      bindCheckboxRefresh("event-type-filter-panel");
+      bindCheckboxRefresh("status-filter-panel");
+
+      refreshPieChartsFromCheckboxes();
+
+      var filters = Array.prototype.slice.call(document.querySelectorAll(".col-filter"));
+      var sortableHeaders = Array.prototype.slice.call(document.querySelectorAll("th.sortable"));
+      var tbody = document.querySelector("tbody");
+      var currentSortCol = null;
+      var currentSortDir = "asc";
+
+      function getRows() {
+        return Array.prototype.slice.call(tbody.querySelectorAll("tr"));
+      }
+
+      function normalizeValue(value) {
+        var trimmed = (value || "").trim();
+        var numeric = Number(trimmed);
+        if (trimmed !== "" && !isNaN(numeric)) {
+          return { type: "number", value: numeric };
+        }
+        return { type: "string", value: trimmed.toLowerCase() };
+      }
+
+      function applyFilters() {
+        getRows().forEach(function (row) {
+          var cells = row.querySelectorAll("td");
+          var visible = true;
+
+          filters.forEach(function (input) {
+            var idx = parseInt(input.getAttribute("data-col"), 10);
+            var wanted = (input.value || "").toLowerCase().trim();
+            var actual = cells[idx] ? cells[idx].textContent.toLowerCase() : "";
+
+            if (wanted && actual.indexOf(wanted) === -1) {
+              visible = false;
+            }
+          });
+
+          row.style.display = visible ? "" : "none";
+        });
+      }
+
+      
+
+      function sortRows(colIndex, dir) {
+        var rows = getRows();
+
+        rows.sort(function (a, b) {
+          var aText = a.children[colIndex] ? a.children[colIndex].textContent : "";
+          var bText = b.children[colIndex] ? b.children[colIndex].textContent : "";
+
+          var aNorm = normalizeValue(aText);
+          var bNorm = normalizeValue(bText);
+
+          var result = 0;
+          if (aNorm.type === "number" && bNorm.type === "number") {
+            result = aNorm.value - bNorm.value;
+          } else {
+            result = aNorm.value.localeCompare(bNorm.value);
+          }
+
+          return dir === "asc" ? result : -result;
+        });
+
+        rows.forEach(function (row) {
+          tbody.appendChild(row);
+        });
+
+        applyFilters();
+      }
+
+      filters.forEach(function (input) {
+        input.addEventListener("input", applyFilters);
+      });
+
+      sortableHeaders.forEach(function (th) {
+        th.addEventListener("click", function () {
+          var colIndex = parseInt(th.getAttribute("data-sort-col"), 10);
+          if (currentSortCol === colIndex) {
+            currentSortDir = currentSortDir === "asc" ? "desc" : "asc";
+          } else {
+            currentSortCol = colIndex;
+            currentSortDir = "asc";
+          }
+          sortRows(colIndex, currentSortDir);
+        });
+      });
+    });
+  </script>
+<!-- PATCH_BROWSER_COUNTRY_PIES_V1 -->
+</body>
+</html>
