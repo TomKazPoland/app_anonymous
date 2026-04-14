@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-import traceback
 from flask import Flask, render_template, request, send_file, abort, g, make_response
+from .observability import extract_request_meta
 
 from .utils import now_timestamp_ms, sanitize_filename, project_root
 from .db import init_db, connect, get_db_path, create_job, insert_mapping, load_mapping_dict
@@ -285,6 +285,7 @@ def create_app() -> Flask:
         g.job_id = None
         g.file_size = None
         g.entities_found = None
+        ctx_meta = extract_request_meta(request)
 
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -310,6 +311,9 @@ def create_app() -> Flask:
             lang=lang,
             mode="index",
             success_flag=True,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         manual = request.args.get("lang", "").strip().lower()
         if manual in SUPPORTED_LANGS:
@@ -621,34 +625,6 @@ def create_app() -> Flask:
 
 
 
-
-        total_events = len(display_events)
-        unknown_event_count = sum(
-            1 for e in display_events
-            if (e.get("event_type") or "unknown") == "unknown"
-        )
-
-        error_route_counts = {}
-        for e in display_events:
-            if e.get("event_type") == "error":
-                r = e.get("route") or "unknown"
-                error_route_counts[r] = error_route_counts.get(r, 0) + 1
-
-        top_route = route_counts[0][0] if route_counts else "n/a"
-        top_error_route = (
-            sorted(error_route_counts.items(), key=lambda x: x[1], reverse=True)[0][0]
-            if error_route_counts else "n/a"
-        )
-        error_share = 0.0 if total_events == 0 else (100.0 * cur_metrics["errors"] / total_events)
-
-        insights = [
-            {"label": "Top route", "value": top_route},
-            {"label": "Top error route", "value": top_error_route},
-            {"label": "Error share", "value": f"{error_share:.1f}%"},
-            {"label": "Success rate", "value": f"{cur_metrics['success_rate']:.1f}%"},
-            {"label": "Legacy / unknown events", "value": str(unknown_event_count)},
-        ]
-
         kpis = [
             {
                 "label": "Visits",
@@ -692,6 +668,17 @@ def create_app() -> Flask:
             },
         ]
 
+        # STAGE3_SAFE_DATA
+        country_data = {}
+        browser_data = {}
+
+        for e in display_events:
+            c = e.get("country") or "UNKNOWN"
+            b = e.get("browser") or "UNKNOWN"
+
+            country_data[c] = country_data.get(c, 0) + 1
+            browser_data[b] = browser_data.get(b, 0) + 1
+
         return render_template(
             "statistics.html",
             t=t,
@@ -701,7 +688,6 @@ def create_app() -> Flask:
             stats_range=stats_range,
             ranges=ranges,
             kpis=kpis,
-            insights=insights,
             rows=rows,
             trend_labels=trend_labels,
             trend_values=trend_values,
@@ -710,6 +696,8 @@ def create_app() -> Flask:
             route_counts=route_counts,
             event_type_counts=event_type_counts,
             status_counts=status_counts,
+            country_data=country_data,
+            browser_data=browser_data,
         )
 
     @app.post("/encode")
@@ -720,6 +708,7 @@ def create_app() -> Flask:
         g.job_id = None
         g.file_size = None
         g.entities_found = None
+        ctx_meta = extract_request_meta(request)
 
         if not rate_limiter.allow(client_ip):
             abort(429)
@@ -768,9 +757,7 @@ def create_app() -> Flask:
                 insert_mapping(conn, job_id, m.token, m.entity_type, m.original_value)
             conn.commit()
 
-            encode_stem = (Path(original_safe).stem[:20] or "file")
-            encode_stamp = "_".join(ts.split("-")[:2])
-            out_name = f"{encode_stem}__CODE__{encode_stamp}{Path(original_safe).suffix or '.txt'}"
+            out_name = f"{Path(original_safe).stem}__ANON__{job_id}{Path(original_safe).suffix or '.txt'}"
             out_path = job_dir / "output" / out_name
             out_path.write_text(anon_text_with_header, encoding="utf-8")
 
@@ -787,6 +774,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="encode",
             success_flag=True,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         return send_file(
             out_path,
@@ -803,6 +793,7 @@ def create_app() -> Flask:
         g.job_id = None
         g.file_size = None
         g.entities_found = None
+        ctx_meta = extract_request_meta(request)
 
         if not rate_limiter.allow(client_ip):
             abort(429)
@@ -814,52 +805,38 @@ def create_app() -> Flask:
         if validation_error:
             abort(400, validation_error)
 
-
+        uploaded_name = f.filename
+        raw = f.read()
+        g.file_size = len(raw)
+        if len(raw) > MAX_UPLOAD_BYTES:
+            abort(413)
         try:
-            uploaded_name = f.filename
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            abort(400, "File must be valid UTF-8 TXT.")
 
-            raw = f.read()
-            g.file_size = len(raw)
+        job_id = extract_job_id_from_text(text) or extract_job_id_from_filename(uploaded_name)
+        if not job_id:
+            abort(400, "Cannot find job_id. File must include '## ANON_JOB: ...' header or correct filename.")
+        g.job_id = job_id
 
-            if len(raw) > MAX_UPLOAD_BYTES:
-                abort(413)
+        with connect(db_path) as conn:
+            mapping = load_mapping_dict(conn, job_id)
 
-            try:
-                text = raw.decode("utf-8")
-            except UnicodeDecodeError:
-                abort(400, "File must be valid UTF-8 TXT.")
+        if not mapping:
+            abort(404, f"No mapping found for job_id: {job_id}")
 
-            job_id = extract_job_id_from_text(text) or extract_job_id_from_filename(uploaded_name)
+        restored = deanonymize(text, mapping)
 
-            if not job_id:
-                abort(400, "Cannot find job_id. File must include '## ANON_JOB: ...' header or correct filename.")
-            g.job_id = job_id
+        ts2 = now_timestamp_ms()
+        job_dir = storage_dir / job_id
+        (job_dir / "output").mkdir(parents=True, exist_ok=True)
 
-            with connect(db_path) as conn:
-                mapping = load_mapping_dict(conn, job_id)
-
-            mapping_size = len(mapping) if mapping else 0
-
-            if not mapping:
-                abort(404, f"No mapping found for job_id: {job_id}")
-
-            restored = deanonymize(text, mapping)
-
-            ts2 = now_timestamp_ms()
-            job_dir = storage_dir / job_id
-            (job_dir / "output").mkdir(parents=True, exist_ok=True)
-
-            safe_uploaded = sanitize_filename(uploaded_name)
-            uploaded_stem = Path(safe_uploaded).stem
-            user_stem = uploaded_stem.split("__",1)[0]
-            base_stem = (user_stem[:20] or "file")
-            decode_stamp = "_".join(ts2.split("-")[:2])
-            out_name = f"{base_stem}__DECODE__{decode_stamp}.txt"
-            out_path = job_dir / "output" / out_name
-            out_path.write_text(restored, encoding="utf-8")
-
-        except Exception as e:
-            raise
+        safe_uploaded = sanitize_filename(uploaded_name)
+        base_stem = Path(safe_uploaded).stem
+        out_name = f"{base_stem}__DEANON__{job_id}__{ts2}.txt"
+        out_path = job_dir / "output" / out_name
+        out_path.write_text(restored, encoding="utf-8")
 
         log_event(
             app_logger,
@@ -874,6 +851,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="decode",
             success_flag=True,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         return send_file(
             out_path,
@@ -897,6 +877,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
             success_flag=False,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -925,6 +908,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
             success_flag=False,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -953,6 +939,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
             success_flag=False,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -981,6 +970,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
             success_flag=False,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])
@@ -1009,6 +1001,9 @@ def create_app() -> Flask:
             lang=_resolve_lang(),
             mode="encode" if request.path == "/encode" else ("decode" if request.path == "/decode" else "other"),
             success_flag=False,
+            browser=ctx_meta["browser"],
+            user_agent_raw=ctx_meta["user_agent_raw"],
+            country=ctx_meta["country"],
         )
         lang = _resolve_lang()
         t = I18N.get(lang, I18N[DEFAULT_LANG])

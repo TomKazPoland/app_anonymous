@@ -78,6 +78,14 @@ def log_event(
     job_id: Optional[str] = None,
     file_size: Optional[int] = None,
     entities_found: Optional[int] = None,
+    event_type: Optional[str] = None,
+    method: Optional[str] = None,
+    lang: Optional[str] = None,
+    mode: Optional[str] = None,
+    success_flag: Optional[bool] = None,
+    country: Optional[str] = None,
+    browser: Optional[str] = None,
+    user_agent_raw: Optional[str] = None,
 ) -> None:
     payload = {
         "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -87,5 +95,13 @@ def log_event(
         "file_size": file_size,
         "entities_found": entities_found,
         "status_code": status_code,
+        "event_type": event_type,
+        "method": method,
+        "lang": lang,
+        "mode": mode,
+        "success_flag": success_flag,
+        "country": country,
+        "browser": browser,
+        "user_agent_raw": user_agent_raw,
     }
     logger.info(json.dumps(payload, ensure_ascii=True))
